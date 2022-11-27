@@ -33,7 +33,7 @@ qc.draw()
 
 
     
-![png](images/2022-11-26/output_3_0.png)
+![png](/images/2022-11-26/output_3_0.png)
     
 
 
