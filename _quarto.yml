@@ -3,11 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "Jonny's Posts"
+  title: "Jonny Comes"
   navbar:
     background: secondary
     right:
       - about.qmd
+      - posts.qmd
       - icon: github
         href: https://github.com/jonnycomes
       - icon: linkedin
