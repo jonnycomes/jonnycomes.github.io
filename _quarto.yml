@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Jonny's Posts"
+  navbar:
+    background: secondary
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/jonnycomes
+      - icon: linkedin
+        href: https://linkedin.com/in/jcomes
+format:
+  html:
+    theme:
+        light: united
+        dark: slate
+    css: styles.css
+
+
+

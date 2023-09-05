@@ -1,0 +1,160 @@
+---
+title: "Shor's Algorithm"
+author: "Jonny Comes"
+date: "2022-12-16"
+categories: [quantum, qiskit, QFT, phase estimation, Shor's Algorithm]
+image: "phase_est.png"
+jupyter: python3
+format:
+    html: 
+        code-fold: true
+draft: true
+toc: true
+crossref:
+  eq-prefix: '' 
+---
+
+
+## Shor's Algorithm{#sec-intro}
+
+
+
+```{python}
+from qiskit import QuantumCircuit
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info import Statevector
+from math import pi
+import seaborn as sns
+import matplotlib.pyplot as plt
+import math
+
+def cpc(n):
+    '''
+    Returns an n-qubit quantum circuit consisting of a chain 
+    of CP-gates to use in the construction of the QFT circuit.
+    '''
+    qc = QuantumCircuit(n, name='   CPC')
+    for k in range(1, n):
+        qc.cp(pi/(2**k), n-1, n-1-k)
+    return qc
+
+def rev(n):
+    '''
+    Returns an n-qubit quantum circuit that reverses 
+    the order of the n qubits.
+    '''
+    qc = QuantumCircuit(n, name='   Rev')
+    for i in range(n//2):
+        qc.swap(i, n-i-1)
+    return qc
+
+def qft(n):
+    '''
+    Returns the n-qubit QFT circuit.
+    '''
+    qc = QuantumCircuit(n, name=f'  QFT')
+    qc.h(n-1)
+    if n == 1:
+        return qc
+
+    qc.append(cpc(n), range(n))
+    qc.append(qft(n-1), range(n-1))
+    qc.append(rev(n-1), range(n-1))
+    qc.append(rev(n), range(n))
+    return qc
+
+def phase_est(u, n):
+    '''
+    Returns the quantum circuit for phase estimation depending
+    on the gate u, extended with n-qubits. 
+    If measure flag is True, will return with first (top)
+    measurement of first (top) n qubits.
+    '''
+    m = u.num_qubits
+    qc = QuantumCircuit(n+m)
+    
+    for i in range(n):
+        qc.h(m+i)
+    cu = u.control()
+    for i in range(n):
+        for _ in range(2**i):
+            qc.append(cu, [m+i] + list(range(m)))
+    qc.append(qft(n).inverse(), range(m, m+n))
+
+    return qc
+
+def scatter_phase_estimates(u, input_int=0, qubit_size=12, rare=0.01): 
+    '''
+    Produces a scatter plot of the phases estimates.
+    '''
+    u_size = u.num_qubits
+    num_qbits = []
+    probs = []
+    thetas = []
+    for n in range(2, qubit_size + 1):
+        pe = phase_est(u, n)
+        in_state = Statevector.from_int(input_int, 2**(n+u_size)) 
+        out_state = in_state.evolve(pe)
+        out_state.draw('latex')
+        prob_dict = out_state.probabilities_dict()
+        states = list(prob_dict.keys())
+        num_qbits += [n for s in states if prob_dict[s] > rare]
+        probs += [prob_dict[s] for s in states if prob_dict[s] > rare]
+        thetas += [int(f'{s[:-u_size]}', base=2)/2**n for s in states if prob_dict[s] > rare]
+    graph = sns.scatterplot(x=num_qbits, y=thetas, size=probs)
+    graph.set_xlabel( "n" , size = 12 )
+    graph.set_ylabel( "Estimate of theta (decimal)" , size = 12 )
+    plt.show()
+
+```
+
+
+```{python}
+def u_matrix(a, N):
+    n = math.ceil(math.log(N, 2))
+    row = [0 for _ in range(2**n)]
+    mtx = [row[:] for _ in range(2**n)]
+    for j in range(N):
+        i = a*j % N
+        mtx[i][j] = 1
+    for i in range(N, 2**n):
+        mtx[i][i] = 1
+    return mtx
+
+def u_gate(a, N):
+    n = math.ceil(math.log(N, 2))
+    circuit = QuantumCircuit(n)
+    u = Operator(u_matrix(a,N))
+    circuit.unitary(u, range(n), label='U')
+    return circuit.to_gate(label='U')
+```
+
+```{python}
+N = 35
+a = 3
+m = 6 #math.ceil(math.log(N, 2)) #number of qubits for phase est.
+n = math.ceil(math.log(N, 2)) #min num of qubits with states |0>,...,|N-1>
+u = u_gate(a, N)
+pe = phase_est(u, m)
+in_state = Statevector.from_int(1, 2**(m + n))
+out_state = in_state.evolve(pe)
+state_probs = out_state.probabilities_dict()
+states = list(state_probs.keys())
+first_states = [int(s[:m], base=2) for s in states]
+first_states = list(set(first_states))
+probs = []
+for s in first_states:
+    probs.append(0)
+    for state in states:
+        if int(state[:m], base=2) == s:
+            probs[-1] += state_probs[state]
+#probs = [state_probs[s] for s in states]
+print(first_states)
+print(probs)
+sns.barplot(x=first_states, y=probs)
+```
+
+
+### Phase Estimation
+
+Hello!

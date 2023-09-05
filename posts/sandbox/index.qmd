@@ -1,0 +1,129 @@
+---
+title: "Sandbox"
+author: "Jonny Comes"
+date: "2022-12-02"
+categories: [draft]
+jupyter: python3
+format:
+    html: 
+        code-fold: true
+draft: true
+toc: true
+crossref:
+  eq-prefix: '' 
+---
+
+asdklfj;aslkdjf asl djasldkj fal;skjdf ak;lsjd fklasjd flkjasdklfjlasd
+as d;kfjasdl;kf jalsdkjfalskdj f;lkasj dflaksjd flk;jasdlkfj asdlkfjasd f
+asd f;lkjasd;flkjasl;dfjk
+
+
+
+```{ojs}
+import { chart } from "d/25c985d0085db54e"
+chart
+```
+
+
+
+
+```{python}
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+from math import pi
+
+
+# importing the sys module
+import sys
+ 
+# the setrecursionlimit function is
+# used to modify the default recursion
+# limit set by python. Using this,
+# we can increase the recursion limit
+# to satisfy our needs
+ 
+sys.setrecursionlimit(10**6)
+
+```
+
+
+
+```{python}
+def cpc(n):
+    qc = QuantumCircuit(n, name='   CPC')
+    for k in range(1, n):
+        qc.cp(pi/(2**k), n-1, n-1-k)
+    return qc
+
+cpc(5).draw(output='mpl', reverse_bits=True)
+```
+
+
+```{python}
+def rev(n):
+    qc = QuantumCircuit(n, name='   Rev')
+    for i in range(n//2):
+        qc.swap(i, n-i-1)
+    return qc
+
+rev(7).draw(output='mpl', reverse_bits=True)
+```
+
+
+```{python}
+def qft(n):
+    qc = QuantumCircuit(n, name=f'  QFT')
+    qc.h(n-1)
+    if n == 1:
+        return qc
+    qc.append(cpc(n), range(n))
+    qc.append(qft(n-1), range(n-1))
+    qc.append(rev(n-1), range(n-1))
+    qc.append(rev(n), range(n))
+
+    return qc
+
+qft(5).draw(output='mpl', reverse_bits=True, style={
+    "displaycolor": {
+        "   Rev": [ # gate name
+            "#555555", # box color (grey)
+            "#FFFFFF" # box text color (white)
+        ],
+        "  QFT": [ # gate name
+            "#da1e28", # box color (red)
+            "#FFFFFF" # box text color (white)
+        ],
+    }})
+```
+
+
+```{python}
+#| code-fold: false
+
+
+n = 2
+a = 3
+state_in = Statevector.from_int(a, 2**n)
+state_out = state_in.evolve(qft(n))
+state_out.draw('latex')
+```
+
+For a slightly larger computation, let's compute $QFT_3|7\rangle$:
+
+```{python}
+#| code-fold: false
+
+n = 3
+a = 7
+state_in = Statevector.from_int(a, 2**n)
+state_out = state_in.evolve(qft(n))
+state_out.draw('latex')
+```
+
+```{python}
+qft_dg = qft(3).inverse()
+qft_dg.draw(output='mpl', reverse_bits=True)
+```
+
+
+ 

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jonny Comes">
+<meta name="dcterms.date" content="2022-12-14">
+
+<title>Jonny’s Posts - Quantum Phase Estimation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Jonny’s Posts</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jonnycomes"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/jcomes"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Quantum Phase Estimation</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">quantum</div>
+                <div class="quarto-category">qiskit</div>
+                <div class="quarto-category">QFT</div>
+                <div class="quarto-category">phase estimation</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jonny Comes </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 14, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link active" data-scroll-target="#sec-intro">Quantum phase estimation</a>
+  <ul class="collapse">
+  <li><a href="#controlled-u-gates" id="toc-controlled-u-gates" class="nav-link" data-scroll-target="#controlled-u-gates">Controlled <span class="math inline">\(U\)</span>-gates</a></li>
+  <li><a href="#cu-gates-in-qiskit" id="toc-cu-gates-in-qiskit" class="nav-link" data-scroll-target="#cu-gates-in-qiskit">CU-gates in qiskit</a></li>
+  <li><a href="#the-quantum-phase-estimation-circuit" id="toc-the-quantum-phase-estimation-circuit" class="nav-link" data-scroll-target="#the-quantum-phase-estimation-circuit">The quantum phase estimation circuit</a></li>
+  </ul></li>
+  <li><a href="#inputting-an-eigenvector-to-the-phase-estimation-circuit" id="toc-inputting-an-eigenvector-to-the-phase-estimation-circuit" class="nav-link" data-scroll-target="#inputting-an-eigenvector-to-the-phase-estimation-circuit">Inputting an eigenvector to the phase estimation circuit</a>
+  <ul class="collapse">
+  <li><a href="#example-uz" id="toc-example-uz" class="nav-link" data-scroll-target="#example-uz">Example: <span class="math inline">\(U=Z\)</span></a></li>
+  <li><a href="#example-ut" id="toc-example-ut" class="nav-link" data-scroll-target="#example-ut">Example: <span class="math inline">\(U=T\)</span></a></li>
+  <li><a href="#example-up_2pi3" id="toc-example-up_2pi3" class="nav-link" data-scroll-target="#example-up_2pi3">Example: <span class="math inline">\(U=P_{2\pi/3}\)</span></a></li>
+  </ul></li>
+  <li><a href="#honest-phase-estimation-when-we-dont-already-know-the-eigenvalue" id="toc-honest-phase-estimation-when-we-dont-already-know-the-eigenvalue" class="nav-link" data-scroll-target="#honest-phase-estimation-when-we-dont-already-know-the-eigenvalue">Honest phase estimation: when we don’t already know the eigenvalue</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="sec-intro" class="level2">
+<h2 class="anchored" data-anchor-id="sec-intro">Quantum phase estimation</h2>
+<p>The story of quantum phase estimation starts with a unitary matrix <span class="math inline">\(U\)</span>. Suppose <span class="math inline">\(|x\rangle\)</span> is an eigenvector of <span class="math inline">\(U\)</span> so that <span class="math inline">\(U|x\rangle=\lambda|x\rangle\)</span> for some complex number <span class="math inline">\(\lambda\)</span>. Since <span class="math inline">\(U\)</span> is unitary, hence distance preserving, we know <span class="math inline">\(|\lambda|=1\)</span> so that <span class="math inline">\(\lambda=e^{2\pi i\theta}\)</span> for some <span class="math inline">\(0\leq\theta&lt;1\)</span>. Quantum phase estimation uses a quantum circuit, depending on <span class="math inline">\(U\)</span>, to estimate <span class="math inline">\(\theta\)</span>.</p>
+<p>The quantum circuit for quantum phase estimation depends on the quantum Fourier transform (QFT). In a <a href="../quantum-fourier-transform">previous post</a> I discussed QFT. In particular, I constructed a quantum circuit for QFT using <a href="https//:qiskit.org">qiskit</a>. In this post I will reuse that code.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> qiskit <span class="im">import</span> QuantumCircuit</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> qiskit.circuit.library.standard_gates <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> qiskit.quantum_info <span class="im">import</span> Statevector</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cpc(n):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns an n-qubit quantum circuit consisting of a chain </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    of CP-gates to use in the construction of the QFT circuit.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    qc <span class="op">=</span> QuantumCircuit(n, name<span class="op">=</span><span class="st">'   CPC'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        qc.cp(pi<span class="op">/</span>(<span class="dv">2</span><span class="op">**</span>k), n<span class="op">-</span><span class="dv">1</span>, n<span class="op">-</span><span class="dv">1</span><span class="op">-</span>k)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> qc</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rev(n):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns an n-qubit quantum circuit that reverses </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">    the order of the n qubits.</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    qc <span class="op">=</span> QuantumCircuit(n, name<span class="op">=</span><span class="st">'   Rev'</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">//</span><span class="dv">2</span>):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        qc.swap(i, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> qc</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> qft(n):</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns the n-qubit QFT circuit.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    qc <span class="op">=</span> QuantumCircuit(n, name<span class="op">=</span><span class="ss">f'  QFT'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    qc.h(n<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> qc</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    qc.append(cpc(n), <span class="bu">range</span>(n))</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    qc.append(qft(n<span class="op">-</span><span class="dv">1</span>), <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    qc.append(rev(n<span class="op">-</span><span class="dv">1</span>), <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    qc.append(rev(n), <span class="bu">range</span>(n))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> qc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>I first read about quantum phase estimation in <a href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">qiskit’s book</a> while trying to better understand Shor’s algorithm. Much of what I’ve written below is merely a retelling of qiskit’s treatment. I plan to post about Shor’s algorithm soon.</p>
+<section id="controlled-u-gates" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-u-gates">Controlled <span class="math inline">\(U\)</span>-gates</h3>
+<p>Fix a unitary matrix <span class="math inline">\(U\)</span>. The controlled <span class="math inline">\(U\)</span>-gate is defined by <span class="math display">\[
+\begin{align*}
+CU: &amp; |0\rangle\otimes|v\rangle \mapsto |0\rangle\otimes|v\rangle\\
+    &amp; |1\rangle\otimes|v\rangle \mapsto |1\rangle\otimes U|v\rangle.
+\end{align*}
+\]</span> In particular, if <span class="math inline">\(|x\rangle\)</span> is an eigenvector for <span class="math inline">\(U\)</span> with eigenvalue <span class="math inline">\(e^{2\pi i\theta}\)</span> then <span class="math display">\[
+\begin{align*}
+CU: &amp; |0\rangle\otimes|x\rangle \mapsto |0\rangle\otimes|x\rangle\\
+    &amp; |1\rangle\otimes|x\rangle \mapsto e^{2\pi i\theta}|1\rangle\otimes|x\rangle
+\end{align*}
+\]</span> or more compactly, for each <span class="math inline">\(q\in\{0,1\}\)</span> <span class="math display">\[
+CU:|q\rangle\otimes|x\rangle \mapsto e^{2\pi i\theta q}|q\rangle\otimes|x\rangle.
+\]</span></p>
+<p>More generally, we will write <span class="math inline">\(CU_k\)</span> for the controlled <span class="math inline">\(U\)</span>-gate mapping <span class="math display">\[
+CU_k:|q_{n-1}\cdots q_0\rangle\otimes|v\rangle \mapsto
+\begin{cases}
+    |q_{n-1}\cdots q_0\rangle\otimes |v\rangle &amp; \text{if }q_k=0\\
+    |q_{n-1}\cdots q_0\rangle\otimes U|v\rangle &amp; \text{if }q_k=1
+\end{cases}
+\]</span> In particular, substituting the eigenvector <span class="math inline">\(|x\rangle\)</span> we get <span id="eq-CU-map"><span class="math display">\[
+CU_k:|q_{n-1}\cdots q_0\rangle\otimes|x\rangle \mapsto e^{2\pi i\theta q_k} |q_{n-1}\cdots q_0\rangle\otimes|x\rangle.
+\tag{1}\]</span></span></p>
+</section>
+<section id="cu-gates-in-qiskit" class="level3">
+<h3 class="anchored" data-anchor-id="cu-gates-in-qiskit">CU-gates in qiskit</h3>
+<p>We can build a controlled <span class="math inline">\(U\)</span>-gate in qiskit by applying the <code>control()</code> method to a gate object. For example, the following creates a CU-gate when <span class="math inline">\(U=H\)</span>, the Hadamard gate, and places it in a 4-qubit circuit.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> HGate()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cu <span class="op">=</span> u.control()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>qc <span class="op">=</span> QuantumCircuit(<span class="dv">4</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>qc.append(cu, [<span class="dv">2</span>,<span class="dv">0</span>])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>qc.draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="167" height="286"></p>
+</div>
+</div>
+</section>
+<section id="the-quantum-phase-estimation-circuit" class="level3">
+<h3 class="anchored" data-anchor-id="the-quantum-phase-estimation-circuit">The quantum phase estimation circuit</h3>
+<p>The phase estimation circuit is given by the following composition: <span id="eq-phase-est"><span class="math display">\[
+(QFT^\dagger_n\otimes I)(CU_{n-1}^{2^{n-1}}\cdots CU_2^4CU_1^2CU_0)(H^{\otimes n}\otimes I),
+\tag{2}\]</span></span> where <span class="math inline">\(QFT^\dagger_n\)</span> is the inverse quantum Fourier transform. Using the qiskit implementation of QFT from <a href="../quantum-fourier-transform">this post</a>, we can implement the circuit for quantum phase estimation. For example, here is the phase estimation circuit using the <span class="math inline">\(Y\)</span>-gate for <span class="math inline">\(U\)</span>, and <span class="math inline">\(n=3\)</span>:</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> phase_est(u, n):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns the quantum circuit for phase estimation depending</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    on the gate u, extended with n-qubits. </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    If measure flag is True, will return with first (top)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    measurement of first (top) n qubits.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> u.num_qubits</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    qc <span class="op">=</span> QuantumCircuit(n<span class="op">+</span>m)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        qc.h(m<span class="op">+</span>i)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    cu <span class="op">=</span> u.control()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span><span class="op">**</span>i):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            qc.append(cu, [m<span class="op">+</span>i] <span class="op">+</span> <span class="bu">list</span>(<span class="bu">range</span>(m)))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    qc.append(qft(n).inverse(), <span class="bu">range</span>(m, m<span class="op">+</span>n))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> qc</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>phase_est(YGate(), <span class="dv">3</span>).draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>, style<span class="op">=</span>{</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"displaycolor"</span>: {</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"  QFT_dg"</span>: [ <span class="co"># gate name</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#da1e28"</span>, <span class="co"># box color (red)</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#FFFFFF"</span> <span class="co"># box text color (white)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    }})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<p><img src="index_files/figure-html/cell-4-output-1.png" width="712" height="286"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="inputting-an-eigenvector-to-the-phase-estimation-circuit" class="level2">
+<h2 class="anchored" data-anchor-id="inputting-an-eigenvector-to-the-phase-estimation-circuit">Inputting an eigenvector to the phase estimation circuit</h2>
+<p>Recall that the goal of quantum phase estimation is to find <span class="math inline">\(\theta\)</span> where <span class="math inline">\(e^{2\pi i\theta}\)</span> is an eigenvalue of <span class="math inline">\(U\)</span>. To see how the circuit <a href="#eq-phase-est">2</a> can help to accomplish this, we input <span class="math inline">\(|0\rangle^{\otimes n}\otimes|x\rangle\)</span> where <span class="math inline">\(|x\rangle\)</span> is an eigenvector of <span class="math inline">\(U\)</span> with eigenvalue <span class="math inline">\(e^{2\pi i\theta}\)</span>. First we apply the Hadamard <span class="math inline">\(H\)</span> to the first (top) <span class="math inline">\(n\)</span> qubits:</p>
+<p><span id="eq-step1"><span class="math display">\[\begin{align*}
+|0\rangle^{\otimes n}\otimes|x\rangle
+&amp; \mapsto \left(\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle\right)^{\otimes n}\otimes|x\rangle \\
+&amp; = \frac{1}{\sqrt{2^n}}\sum_{0\leq b_0,\ldots,b_{n-1}\leq 1}|b_{n-1}\cdots b_1b_0\rangle \otimes|x\rangle \\
+\end{align*} \tag{3}\]</span></span> Following <a href="#eq-phase-est">2</a>, next we apply <span class="math inline">\(CU_{n-1}^{2^{n-1}}\cdots CU_2^4CU_1^2CU_0\)</span>. Using <a href="#eq-CU-map">1</a> we see the result of applying <span class="math inline">\(CU_{n-1}^{2^{n-1}}\cdots CU_2^4CU_1^2CU_0\)</span> to the output of <a href="#eq-step1">3</a> gives <span id="eq-step2"><span class="math display">\[\begin{align*}
+&amp; \frac{1}{\sqrt{2^n}}\sum_{0\leq b_0,\ldots,b_{n-1}\leq 1}\prod_{k=0}^{n-1}e^{2\pi i\theta b_k 2^{k}}|b_{n-1}\cdots b_1b_0\rangle \otimes|x\rangle \\
+= &amp; \frac{1}{\sqrt{2^n}}\sum_{0\leq b_0,\ldots,b_{n-1}\leq 1}e^{2\pi i\theta \sum_{k=0}^{n-1}b_k 2^{k}}|b_{n-1}\cdots b_1b_0\rangle \otimes|x\rangle \\
+= &amp; \frac{1}{\sqrt{2^n}}\sum_{0\leq b&lt;2^{n}}e^{2\pi i\theta b}|b\rangle \otimes|x\rangle \\
+\end{align*} \tag{4}\]</span></span> Setting <span class="math inline">\(N=2^{n}\)</span>, the left state in the tensor product <a href="#eq-step2">4</a> can be rewritten as <span id="eq-QFT-out"><span class="math display">\[
+\frac{1}{N}\sum_{0\leq b&lt;N}e^{\frac{2\pi i N\theta b}{N}}|b\rangle.
+\tag{5}\]</span></span> Now, since <span class="math inline">\(0\leq \theta &lt;1\)</span> we have <span class="math inline">\(0\leq N\theta&lt;N\)</span>. If <span class="math inline">\(N\theta\)</span> happens to be an integer, then the expression <a href="#eq-QFT-out">5</a> is exactly the output <span class="math inline">\(QFT_n|N\theta\rangle\)</span> (see <a href="../quantum-fourier-transform">this post</a>). In this case, when we compete the circuit <a href="#eq-phase-est">2</a> by applying <span class="math inline">\((QFT^\dagger_n\otimes I)\)</span> to <a href="#eq-step2">4</a> the result is <span class="math inline">\(|N\theta\rangle\otimes|x\rangle\)</span>. Then we can measure the first (top) <span class="math inline">\(n\)</span>-qubits to obtain <span class="math inline">\(N\theta\)</span>. Note that since <span class="math inline">\(N=2^n\)</span>, these first <span class="math inline">\(n\)</span> qubits will give the binary representation of <span class="math inline">\(\theta\)</span> up to a shift in the radix point. For example, if the first <span class="math inline">\(n=3\)</span> qubits are in state <span class="math inline">\(|011\rangle\)</span>, then <span class="math inline">\(\theta\)</span> has binary representation <span class="math inline">\(0.011\)</span>, so <span class="math inline">\(\theta=3/8\)</span>. If <span class="math inline">\(N\theta\)</span> is not an integer, the result of measuring the first <span class="math inline">\(n\)</span>-qubits will give an approximation <span class="math inline">\(\theta_n\)</span> for <span class="math inline">\(\theta\)</span>. The difference <span class="math inline">\(\theta-\theta_n\)</span> will approach 0 as <span class="math inline">\(n\to\infty\)</span>, so we can improve the approximation <span class="math inline">\(\theta_n\approx\theta\)</span> by picking a larger <span class="math inline">\(n\)</span>.</p>
+<section id="example-uz" class="level3">
+<h3 class="anchored" data-anchor-id="example-uz">Example: <span class="math inline">\(U=Z\)</span></h3>
+<p>In this example we let <span class="math inline">\(U\)</span> denote the standard <span class="math inline">\(Z\)</span>-gate so that <span class="math inline">\(U=|0\rangle\langle0|-|1\rangle\langle1|\)</span>. In this case we have an eigenvector <span class="math inline">\(|x\rangle=|0\rangle\)</span> with eigenvalue <span class="math inline">\(1\)</span>, and thus <span class="math inline">\(\theta=0\)</span>. Let’s use the phase estimation circuit with <span class="math inline">\(n=2\)</span>:</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pe <span class="op">=</span> phase_est(ZGate(), n)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>pe.draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>, style<span class="op">=</span>{</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"displaycolor"</span>: {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"  QFT_dg"</span>: [ <span class="co"># gate name</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#da1e28"</span>, <span class="co"># box color (red)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#FFFFFF"</span> <span class="co"># box text color (white)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    }})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="470" height="225"></p>
+</div>
+</div>
+<p>We use the default input state <span class="math inline">\(|00\rangle\otimes|x\rangle=|000\rangle\)</span>, which we can implement in qiskit as follows:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">0</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>in_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<p><span class="math display">\[ |000\rangle\]</span></p>
+</div>
+</div>
+<p>Qiskit will compute the output, the result of applying the quantum phase estimation circuit to the state above, as follows:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>out_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<p><span class="math display">\[ |000\rangle\]</span></p>
+</div>
+</div>
+<p>The first <span class="math inline">\(n=2\)</span> qubits give <span class="math inline">\(|00\rangle=|N\theta\rangle\)</span>. Thus we see <span class="math inline">\(\theta = 0\)</span>, as expected.</p>
+<p>On the other hand, <span class="math inline">\(U=Z\)</span> also has an eigenvector <span class="math inline">\(|x\rangle=|1\rangle\)</span> with eigenvalue <span class="math inline">\(-1\)</span> (so <span class="math inline">\(\theta=1/2\)</span>). The following code will run the state <span class="math inline">\(|00\rangle\otimes|x\rangle=|001\rangle\)</span> through the phase estimation circuit:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">1</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>out_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<p><span class="math display">\[ |101\rangle\]</span></p>
+</div>
+</div>
+<p>This time the first <span class="math inline">\(n=2\)</span> qubits gives <span class="math inline">\(|10\rangle=|N\theta\rangle\)</span>, which means the binary representation of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(0.10\)</span>, so <span class="math inline">\(\theta=1/2\)</span>, as expected.</p>
+</section>
+<section id="example-ut" class="level3">
+<h3 class="anchored" data-anchor-id="example-ut">Example: <span class="math inline">\(U=T\)</span></h3>
+<p>In this example we let <span class="math inline">\(U\)</span> denote the standard <span class="math inline">\(T\)</span>-gate so that <span class="math inline">\(U=|0\rangle\langle0|+e^{\pi i/4}|1\rangle\langle1|\)</span>. Let us look at the eigenvector <span class="math inline">\(|x\rangle=|1\rangle\)</span> which has eigenvalue <span class="math inline">\(e^{\pi i/4}\)</span>, (so <span class="math inline">\(\theta=1/8\)</span>). Let’s start by using the phase estimation circuit with <span class="math inline">\(n=2\)</span>:</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pe <span class="op">=</span> phase_est(TGate(), n)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pe.draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>, style<span class="op">=</span>{</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"displaycolor"</span>: {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"  QFT_dg"</span>: [ <span class="co"># gate name</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#da1e28"</span>, <span class="co"># box color (red)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#FFFFFF"</span> <span class="co"># box text color (white)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    }})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="index_files/figure-html/cell-9-output-1.png" width="470" height="225"></p>
+</div>
+</div>
+<p>If we input the state <span class="math inline">\(|00\rangle\otimes|x\rangle=|001\rangle\)</span>, we get the following unpleasant looking output:</p>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">1</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>out_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><span class="math display">\[(0.25 + 0.603553390593 i) |001\rangle+ (0.25 - 0.603553390593 i) |011\rangle+ (\frac{1}{4} - \frac{2^{\frac{47}{191}} \cdot 3^{\frac{160}{191}} \cdot 5^{\frac{160}{573}} \cdot 7^{\frac{99}{191}} i}{21 \pi^{\frac{887}{573}}}) |101\rangle+ (\frac{1}{4} + \frac{2^{\frac{47}{191}} \cdot 3^{\frac{160}{191}} \cdot 5^{\frac{160}{573}} \cdot 7^{\frac{99}{191}} i}{21 \pi^{\frac{887}{573}}}) |111\rangle\]</span></p>
+</div>
+</div>
+<p>If we to measure the first <span class="math inline">\(n=2\)</span> qubits of that output, we see four states with the following probabilities:</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>prob_dict <span class="op">=</span> out_state.probabilities_dict()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> <span class="bu">list</span>(prob_dict.keys())</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>first_states <span class="op">=</span> [s[:<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [prob_dict[s] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>first_states, y<span class="op">=</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;AxesSubplot:&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-11-output-2.png" width="579" height="404"></p>
+</div>
+</div>
+<p>The reason that we are seeing a somewhat complicated output (which you may not expect since <span class="math inline">\(\theta=1/8\)</span> is so uncomplicated) is that we have chosen <span class="math inline">\(n=2\)</span>, so that <span class="math inline">\(N=2^n=4\)</span>, which gives the non-integer <span class="math inline">\(N\theta=1/2\)</span>. On the other hand, if we use a circuit with <span class="math inline">\(n=3\)</span> we get something much nicer. Here’s the circuit:</p>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pe <span class="op">=</span> phase_est(TGate(), n)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>pe.draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>, style<span class="op">=</span>{</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"displaycolor"</span>: {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"  QFT_dg"</span>: [ <span class="co"># gate name</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#da1e28"</span>, <span class="co"># box color (red)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#FFFFFF"</span> <span class="co"># box text color (white)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    }})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><img src="index_files/figure-html/cell-12-output-1.png" width="712" height="286"></p>
+</div>
+</div>
+<p>And here is the output when <span class="math inline">\(n=3\)</span>:</p>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">1</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>out_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><span class="math display">\[ |0011\rangle\]</span></p>
+</div>
+</div>
+<p>In this case, the first 3 qubits of the output are <span class="math inline">\(|001\rangle\)</span>, so <span class="math inline">\(0.001\)</span> is the binary representation of <span class="math inline">\(\theta\)</span>, which gives <span class="math inline">\(\theta=1/8\)</span>, as expected.</p>
+</section>
+<section id="example-up_2pi3" class="level3">
+<h3 class="anchored" data-anchor-id="example-up_2pi3">Example: <span class="math inline">\(U=P_{2\pi/3}\)</span></h3>
+<p>If the <span class="math inline">\(\theta\)</span> we’re searching for does not have a terminating binary representation, then the phase estimation circuit has no chance of outputting the exact value of <span class="math inline">\(\theta\)</span>. For example, let <span class="math inline">\(U=P_{2\pi/3}\)</span> denote the phase gate given by <span class="math inline">\(U=|0\rangle\langle0|+e^{2\pi i/3}|1\rangle\langle1|\)</span>. Let’s look at the eigenvector <span class="math inline">\(|x\rangle=|1\rangle\)</span> with eigenvalue <span class="math inline">\(e^{2\pi i/3}\)</span>, so that <span class="math inline">\(\theta = 1/3\)</span>. In this case, <span class="math inline">\(N\theta=N/3\)</span> will not be an integer for any <span class="math inline">\(N=2^n\)</span>, so the phase estimation circuit will only give us an approximation for <span class="math inline">\(\theta\)</span>, and we should see that approximation improving as <span class="math inline">\(n\)</span> increases. For example, if we take <span class="math inline">\(n=2\)</span>, the phase estimation circuit will send <span class="math inline">\(|00\rangle\otimes|x\rangle=|001\rangle\)</span> to the following superposition:</p>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> PhaseGate(<span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pe <span class="op">=</span> phase_est(u, n)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">1</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>out_state.draw(<span class="st">'latex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><span class="math display">\[\frac{1}{4} |001\rangle+ (0.591506350946 + 0.591506350946 i) |011\rangle- \frac{\sqrt{3} i}{4} |101\rangle+ (0.158493649054 - 0.158493649054 i) |111\rangle\]</span></p>
+</div>
+</div>
+<p>Measure the first <span class="math inline">\(n=2\)</span> qubits of that output, we see all four states with the following probabilities:</p>
+<div class="cell" data-execution_count="14">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>prob_dict <span class="op">=</span> out_state.probabilities_dict()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> <span class="bu">list</span>(prob_dict.keys())</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>first_states <span class="op">=</span> [s[:<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [prob_dict[s] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>first_states, y<span class="op">=</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>&lt;AxesSubplot:&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-15-output-2.png" width="571" height="404"></p>
+</div>
+</div>
+<p>The state with the highest probability, <span class="math inline">\(|01\rangle\)</span>, leads to the best of the four approximations, namely the one with binary representation <span class="math inline">\(0.01\)</span>, i.e.&nbsp;<span class="math inline">\(\theta\approx 1/4\)</span>. To get a better approximation, we take <span class="math inline">\(n=3\)</span> which leads to the following probabilities:</p>
+<div class="cell" data-execution_count="15">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>pe <span class="op">=</span> phase_est(u, n)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>in_state <span class="op">=</span> Statevector.from_int(<span class="dv">1</span>, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>)) </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>prob_dict <span class="op">=</span> out_state.probabilities_dict()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> <span class="bu">list</span>(prob_dict.keys())</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>first_states <span class="op">=</span> [s[:<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [prob_dict[s] <span class="cf">for</span> s <span class="kw">in</span> states]</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>first_states, y<span class="op">=</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>&lt;AxesSubplot:&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-16-output-2.png" width="571" height="404"></p>
+</div>
+</div>
+<p>The highest probability leads us to the binary representation <span class="math inline">\(0.011\)</span>, which gives the approximation <span class="math inline">\(\theta\approx 3/8\)</span>.</p>
+<p>The following plot shows the (decimal) approximations that the phase estimation circuit produces for <span class="math inline">\(2\leq n\leq 12\)</span>. Each point corresponds to a possible state obtained by measuring the first <span class="math inline">\(n\)</span> qubits in the output of the phase estimation circuit. The size of each point corresponds to the state’s probability, and only those states with probability greater than one percent are shown. We can see that the estimates obtained are indeed approaching the true value <span class="math inline">\(\theta=1/3\)</span>.</p>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scatter_phase_estimates(u, input_int<span class="op">=</span><span class="dv">0</span>, qubit_size<span class="op">=</span><span class="dv">12</span>, rare<span class="op">=</span><span class="fl">0.01</span>): </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Produces a scatter plot of the phases estimates.</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    u_size <span class="op">=</span> u.num_qubits</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    num_qbits <span class="op">=</span> []</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> []</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    thetas <span class="op">=</span> []</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, qubit_size <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        pe <span class="op">=</span> phase_est(u, n)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        in_state <span class="op">=</span> Statevector.from_int(input_int, <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span>u_size)) </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        out_state <span class="op">=</span> in_state.evolve(pe)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        out_state.draw(<span class="st">'latex'</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        prob_dict <span class="op">=</span> out_state.probabilities_dict()</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        states <span class="op">=</span> <span class="bu">list</span>(prob_dict.keys())</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>        num_qbits <span class="op">+=</span> [n <span class="cf">for</span> s <span class="kw">in</span> states <span class="cf">if</span> prob_dict[s] <span class="op">&gt;</span> rare]</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        probs <span class="op">+=</span> [prob_dict[s] <span class="cf">for</span> s <span class="kw">in</span> states <span class="cf">if</span> prob_dict[s] <span class="op">&gt;</span> rare]</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        thetas <span class="op">+=</span> [<span class="bu">int</span>(<span class="ss">f'</span><span class="sc">{</span>s[:<span class="op">-</span>u_size]<span class="sc">}</span><span class="ss">'</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span><span class="op">**</span>n <span class="cf">for</span> s <span class="kw">in</span> states <span class="cf">if</span> prob_dict[s] <span class="op">&gt;</span> rare]</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    graph <span class="op">=</span> sns.scatterplot(x<span class="op">=</span>num_qbits, y<span class="op">=</span>thetas, size<span class="op">=</span>probs)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    graph.set_xlabel( <span class="st">"n"</span> , size <span class="op">=</span> <span class="dv">12</span> )</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    graph.set_ylabel( <span class="st">"Estimate of theta (decimal)"</span> , size <span class="op">=</span> <span class="dv">12</span> )</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>scatter_phase_estimates(PhaseGate(<span class="dv">2</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">3</span>), input_int<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-17-output-1.png" width="591" height="425"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="honest-phase-estimation-when-we-dont-already-know-the-eigenvalue" class="level2">
+<h2 class="anchored" data-anchor-id="honest-phase-estimation-when-we-dont-already-know-the-eigenvalue">Honest phase estimation: when we don’t already know the eigenvalue</h2>
+<p>So far we have looked at what the phase estimation circuit does to an input of the form <span class="math inline">\(|0\rangle^{\otimes n}\otimes|x\rangle\)</span> where <span class="math inline">\(|x\rangle\)</span> is an eigenvector of <span class="math inline">\(U\)</span>. But hang on, if we know an eigenvector <span class="math inline">\(|x\rangle\)</span> for <span class="math inline">\(U\)</span>, we can just compute <span class="math inline">\(U|x\rangle\)</span> to determine the corresponding <span class="math inline">\(\theta\)</span>. Phase estimation is only useful if it can determine (an estimate) for the phase without already knowing eigenvectors. Luckily, since <span class="math inline">\(U\)</span> is unitary it is diagonalizable (by a Spectral Theorem). In other words, <span class="math inline">\(U\)</span> admits a basis of eigenvectors. In particular, for <em>any</em> vector <span class="math inline">\(|x\rangle\)</span> we can write <span id="eq-eigensum"><span class="math display">\[
+|x\rangle = \alpha_1|x_1\rangle+\alpha_2|x_2\rangle+\cdots+\alpha_m|x_m\rangle
+\tag{6}\]</span></span> where <span class="math inline">\(|x_1\rangle,\ldots,|x_m\rangle\)</span> are all eigenvectors of <span class="math inline">\(U\)</span>. Thus, if we run <span class="math inline">\(|x\rangle\)</span> through the phase estimation circuit will have the effect of running all the eigenvectors that appear in <a href="#eq-eigensum">6</a>, weighted depending on the <span class="math inline">\(\alpha_i\)</span>’s. For example, let <span class="math inline">\(U\)</span> denote the gate corresponding to the following (essentially randomly chosen) circuit:</p>
+<div class="cell" data-execution_count="17">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> QuantumCircuit(<span class="dv">2</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>u.h(<span class="dv">0</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>u.ch(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>u.p(pi<span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>u.cp(pi<span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>u.cy(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>u.draw(output<span class="op">=</span><span class="st">'mpl'</span>, reverse_bits<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<p><img src="index_files/figure-html/cell-18-output-1.png" width="470" height="165"></p>
+</div>
+</div>
+<p>Since <span class="math inline">\(U\)</span> corresponds to a <span class="math inline">\(4\times 4\)</span> matrix, we know <span class="math inline">\(U\)</span> has at most 4 distinct eigenvalues. Let <span class="math inline">\(|x\rangle=|00\rangle\)</span> (which is not an eigenvector of <span class="math inline">\(U\)</span>). The following shows the phase estimates obtained from the phase estimate circuit by inputting <span class="math inline">\(|0\rangle^{\otimes n}\otimes|x\rangle=|0\cdots0\rangle\)</span> for various values of <span class="math inline">\(n\)</span></p>
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> u.to_gate()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>scatter_phase_estimates(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-19-output-1.png" width="591" height="425"></p>
+</div>
+</div>
+<p>Note that after some initial noise, the phase estimates stabilize at 4 different values. These are the four values of <span class="math inline">\(\theta\)</span> corresponding to the 4 distinct eigenvalues of <span class="math inline">\(U\)</span>. As this example illustrates, the process of quantum phase estimation really can be used to discover eigenvalues of a unitary matrix.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

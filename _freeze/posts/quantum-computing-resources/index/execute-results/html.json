@@ -1,0 +1,11 @@
+{
+  "hash": "6c50df8cd8bca48564852af69e6c1fc0",
+  "result": {
+    "markdown": "---\ntitle: Quantum Computing Resources\nauthor: Jonny Comes\ndate: '2022-12-17'\ncategories:\n  - quantum\n  - qiskit\n  - resources\nformat:\n  html:\n    code-fold: true\ndraft: false\ntoc: true\ncrossref:\n  eq-prefix: ''\n---\n\nIn this post I will list all the resources the I find useful while learning quantum computing. I'm sure there are many wonderful resources that are not listed below. My plan is to update this post whenever I find any!\n\n## Getting Started\n\n### Books\n\n* [*Quantum Computing for Everyone*](https://mitpress.mit.edu/9780262539531/quantum-computing-for-everyone/) by Chris Berhardt. This is a wonderfully written introduction to quantum computing. As the title suggests, the book is aimed at non-experts. However, I found it incredibly useful when I was getting started. It does a great job of giving an overview of the subject while providing just enough rigor to make things really understandable. \n\n* [*Quantum Computing: A Gentle Introduction*](http://mmrc.amss.cas.cn/tlb/201702/W020170224608150244118.pdf) by Eleanor Rieffel and Wolfgang Polak. \n\n### Online Tutorials and Resources\n\n* [Qiskit Learn](https://qiskit.org/learn/). In addition to the python-based software libraries, qiskit provides various other resources for learning quantum computing. In particular, there's a qiskit textbook and some tutorials that I have found very useful.  \n\n\n### Coding\n\n* [Qiskit](https://qiskit.org)\n* [IBM Quantum](https://quantum-computing.ibm.com/)\n\n\n## Advanced Topics\n\nComing later...\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
