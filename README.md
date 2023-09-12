@@ -1,5 +1,7 @@
-# My blog
+# My webpage
 
-Hello! My name is Jonny. I'm an Assistant Professor of Mathematics at The College of Idaho. This is a place for me to write about various math and cs stuff I'm thinking about.
+On this site I keep lists of my publications, 
+my students' projects, and any resources I have written for student research projects.
+There is also a (mostly neglected) technical blog where I write about various math and cs stuff I'm thinking about.
 
-This blog was made with [quarto](https://quarto.org/).
+This site was made with [quarto](https://quarto.org/).
