@@ -1,14 +1,21 @@
 ---
-title: ""
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: false
+title: "Hello!"
+about:
+  template: jolla
 ---
 
+My name is Jonny. I'm an Assistant Professor of Mathematics at [The College of Idaho](https://www.collegeofidaho.edu/). 
+
+I obtained my Ph.D. in mathematics from the University of Oregon in 2010 under the supervision of [Victor Ostrik](https://pages.uoregon.edu/vostrik/). Prior to that I got my B.A. and M.A., both in mathematics, at the University of Montana. If you'd like to know more about my professional background, take a look at my [cv](/cv).
+
+On this site I keep lists of my publications, 
+my students' projects, and any resources I have written for student research projects.
+There is also a (mostly neglected) technical blog where I write about various math and cs stuff I'm thinking about.
+
+
+<a class="btn btn-outline-primary btn-sm" href="research.qmd" role="button">research</a>
+<a class="btn btn-outline-primary btn-sm" href="students.qmd" role="button">student projects</a>
+<a class="btn btn-outline-primary btn-sm" href="posts.qmd" role="button">blog</a>
+<a class="btn bi bi-github btn-outline-primary btn-sm" href="https://github.com/jonnycomes" role="button"> Github</a>
+<a class="btn bi bi-linkedin btn-outline-primary btn-sm" href="https://linkedin.com/in/jcomes" role="button"> LinkedIn</a>
 

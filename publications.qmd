@@ -1,0 +1,64 @@
+---
+title: "Publications"
+page-layout: full
+listing:
+  id: publication-list
+  type: table
+  table-striped: true
+  contents:
+    - Title: Stuttering look and say sequences and a challenger to Conway's most complicated algebraic number from the silliest source
+      Authors: Comes
+      Year: 2022
+      Journal: preprint
+      ArXiv: 2206.11991
+    - Title: Jellyfish partition categories
+      Authors: Comes
+      Year: 2020
+      Journal: Algebras and Representation Theory, 23, 327-347
+      ArXiv: 1612.05182
+    - Title: A basis theorem for the degenerate affine oriented Brauer-Clifford supercategoy
+      Authors: Brundan, Comes, Kujawa
+      Year: 2019
+      Journal: Canadian Journal of Math., 71, 1061-1101
+      ArXiv: 1706.09999
+    - Title: Thick ideals in Deligne's category <ins>Re</ins>p$(O_\delta)$
+      Authors: Comes, Heidersdorf
+      Year: 2017
+      Journal: Journal of Algebra, 480, 237-265
+      ArXiv: 1507.06728
+    - Title: A basis theorem for the affine oriented Brauer category and its cyclotomic quotients
+      Authors: Brundan, Comes, Nash, Reynolds
+      Year: 2017
+      Journal: Quantum Topology, 8, 75-112
+      ArXiv: 1404.6574
+    - Title: Ideals in Deligne's tensor category <ins>Re</ins>p$(GL_\delta)$
+      Authors: Comes
+      Year: 2014
+      Journal: Mathematical Research Letters, 21, 969-984
+      ArXiv: 1201.5669
+    - Title: On Deligne's category <ins>Re</ins>p$^{ab}(S_d)$
+      Authors: Comes, Ostrik
+      Year: 2014
+      Journal: Algebra & Number Theory, 8, 473-496
+      ArXiv: 1304.3491
+    - Title: Deligne's category  <ins>Re</ins>p$(GL_\delta)$ and representations of general linear supergroups
+      Authors: Comes, Wilson
+      Year: 2012
+      Journal: Representation Theory, 16, 568-609
+      ArXiv: 1108.0652 
+    - Title: Modified traces on Deligne's category <ins>Re</ins>p$(S_t)$
+      Authors: Comes, Kujawa
+      Year: 2012
+      Journal: Journal of Algebraic Combinatorics, 36, 541-560
+      ArXiv: 1103.2082
+    - Title: On blocks of Deligne's category <ins>Re</ins>p$(S_t)$
+      Authors: Comes, Ostrik
+      Year: 2011
+      Journal: Advances in Mathematics, 226, 1331-1377
+      ArXiv: 0910.5695
+---
+
+
+
+
+

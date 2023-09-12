@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jonny Comes -</title>
+<title>Jonny Comes - Hello!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,12 +30,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -62,42 +59,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -114,11 +81,17 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./research.html">
+ <span class="menu-text">Research</span></a>
   </li>  
-  <li class="dropdown-header">
- <span class="menu-text">posts.qmd</span></li>
+  <li class="nav-item">
+    <a class="nav-link" href="./students.html">
+ <span class="menu-text">Student Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jonnycomes"><i class="bi bi-github" role="img">
 </i> 
@@ -139,220 +112,28 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QFT">QFT <span class="quarto-category-count">(2)</span></div><div class="category" data-category="phase estimation">phase estimation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="qiskit">qiskit <span class="quarto-category-count">(4)</span></div><div class="category" data-category="quantum">quantum <span class="quarto-category-count">(4)</span></div><div class="category" data-category="resources">resources <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<div class="quarto-about-jolla">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hello!</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header><main class="content" id="quarto-document-content">
+<p>My name is Jonny. I’m an Assistant Professor of Mathematics at <a href="https://www.collegeofidaho.edu/">The College of Idaho</a>.</p>
+<p>I obtained my Ph.D.&nbsp;in mathematics from the University of Oregon in 2010 under the supervision of <a href="https://pages.uoregon.edu/vostrik/">Victor Ostrik</a>. Prior to that I got my B.A. and M.A., both in mathematics, at the University of Montana. If you’d like to know more about my professional background, take a look at my <a href="./cv">cv</a>.</p>
+<p>On this site I keep lists of my publications, my students’ projects, and any resources I have written for student research projects. There is also a (mostly neglected) technical blog where I write about various math and cs stuff I’m thinking about.</p>
+<p><a class="btn btn-outline-primary btn-sm" href="./research.html" role="button">research</a> <a class="btn btn-outline-primary btn-sm" href="./students.html" role="button">student projects</a> <a class="btn btn-outline-primary btn-sm" href="./posts.html" role="button">blog</a> <a class="btn bi bi-github btn-outline-primary btn-sm" href="https://github.com/jonnycomes" role="button"> Github</a> <a class="btn bi bi-linkedin btn-outline-primary btn-sm" href="https://linkedin.com/in/jcomes" role="button"> LinkedIn</a></p>
 
 
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1693880413614" data-listing-reading-time-sort="0">
-<div class="thumbnail">
-<a href="./posts/sandbox/Untitled.html">
-<div class="thumbnail-image">
-
+</main>  
 </div>
-</a><p><a href="./posts/sandbox/Untitled.html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/sandbox/Untitled.html">
-<h3 class="no-anchor listing-title">
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/sandbox/Untitled.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="quantum,qiskit,resources" data-listing-date-sort="1671260400000" data-listing-file-modified-sort="1693880413622" data-listing-reading-time-sort="0.8">
-<div class="thumbnail">
-<a href="./posts/quantum-computing-resources/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/quantum-computing-resources/index.html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/quantum-computing-resources/index.html">
-<h3 class="no-anchor listing-title">
-Quantum Computing Resources
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quantum'); return false;">
-quantum
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('qiskit'); return false;">
-qiskit
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('resources'); return false;">
-resources
-</div>
-</div>
-<a href="./posts/quantum-computing-resources/index.html">
-<div class="listing-description">
-In this post I will list all the…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/quantum-computing-resources/index.html">
-<div class="listing-date">
-Dec 17, 2022
-</div>
-<div class="listing-author">
-Jonny Comes
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="quantum,qiskit,QFT,phase estimation" data-listing-date-sort="1671001200000" data-listing-file-modified-sort="1693880413611" data-listing-reading-time-sort="11.855">
-<div class="thumbnail">
-<p><a href="./posts/phase-estimation/index.html"> <img src="./posts/phase-estimation/phase_est.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/phase-estimation/index.html">
-<h3 class="no-anchor listing-title">
-Quantum Phase Estimation
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quantum'); return false;">
-quantum
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('qiskit'); return false;">
-qiskit
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QFT'); return false;">
-QFT
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('phase estimation'); return false;">
-phase estimation
-</div>
-</div>
-<a href="./posts/phase-estimation/index.html">
-<div class="listing-description">
-The story of quantum phase estimation starts with a unitary matrix <span class="math inline">\(U\)</span>. Suppose <span class="math inline">\(|x\rangle\)</span> is an eigenvector of <span class="math inline">\(U\)</span> so that <span class="math inline">\(U|x\rangle=\lambda|x\rangle\)</span> for some…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/phase-estimation/index.html">
-<div class="listing-date">
-Dec 14, 2022
-</div>
-<div class="listing-author">
-Jonny Comes
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="quantum,qiskit,QFT" data-listing-date-sort="1669964400000" data-listing-file-modified-sort="1693880413612" data-listing-reading-time-sort="8.665">
-<div class="thumbnail">
-<p><a href="./posts/quantum-fourier-transform/index.html"> <img src="./posts/quantum-fourier-transform/qft.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/quantum-fourier-transform/index.html">
-<h3 class="no-anchor listing-title">
-Quantum Fourier transform
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quantum'); return false;">
-quantum
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('qiskit'); return false;">
-qiskit
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QFT'); return false;">
-QFT
-</div>
-</div>
-<a href="./posts/quantum-fourier-transform/index.html">
-<div class="listing-description">
-The Fourier transform is a beautiful function with many important applications. There is a wonderful introduction to the Fourier transform by 3 Blue 1 Brown that is well worth watching. The following is a description of the quantum Fourier transform (QFT). After defining a closed formula for QFT, I will explain how to build the…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/quantum-fourier-transform/index.html">
-<div class="listing-date">
-Dec 2, 2022
-</div>
-<div class="listing-author">
-Jonny Comes
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="quantum,qiskit" data-listing-date-sort="1669618800000" data-listing-file-modified-sort="1693880413613" data-listing-reading-time-sort="1.98">
-<div class="thumbnail">
-<p><a href="./posts/first-qiskit/index.html"> <img src="./posts/first-qiskit/circuit.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/first-qiskit/index.html">
-<h3 class="no-anchor listing-title">
-Qiskit: getting started
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quantum'); return false;">
-quantum
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('qiskit'); return false;">
-qiskit
-</div>
-</div>
-<a href="./posts/first-qiskit/index.html">
-<div class="listing-description">
-Qiskit is an open source software…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/first-qiskit/index.html">
-<div class="listing-date">
-Nov 28, 2022
-</div>
-<div class="listing-author">
-Jonny Comes
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -488,13 +269,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

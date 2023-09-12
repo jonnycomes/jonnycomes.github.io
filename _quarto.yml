@@ -7,7 +7,11 @@ website:
   navbar:
     background: secondary
     right:
-      - about.qmd
+      # - text: "Research"
+      #   menu:
+      - research.qmd
+      # - publications.qmd
+      - students.qmd
       - posts.qmd
       - icon: github
         href: https://github.com/jonnycomes
