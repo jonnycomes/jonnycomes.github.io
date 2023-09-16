@@ -2,7 +2,7 @@
 title: "Jonny Comes"
 about:
   template: broadside
-  image: pic.jpg
+  image: rocks.png
   links:
     - icon: github
       text: Github
