@@ -1,24 +1,39 @@
 ---
-title: "Hello!"
+title: "Jonny Comes"
 about:
-  template: jolla
+  template: broadside
+  image: pic.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/jonnycomes
+    - icon: LinkedIn
+      text: LinkedIn
+      href: href="https://linkedin.com/in/jcomes
 ---
 
-My name is Jonny. I'm an Assistant Professor of Mathematics at [The College of Idaho](https://www.collegeofidaho.edu/). 
+Assistant Professor of Mathematics at The College of Idaho.
 
-I obtained my Ph.D. in mathematics from the University of Oregon in 2010 under the supervision of [Victor Ostrik](https://pages.uoregon.edu/vostrik/). Prior to that I got my B.A. and M.A., both in mathematics, at the University of Montana. If you'd like to know more about my professional background, take a look at my [cv](/cv).
+## Education
 
-On this site I keep lists of my publications, 
-my students' projects, and any resources I have written for student research projects.
-There is also a technical blog where I (rarely) write about various math and cs stuff I'm thinking about.
+**University of Oregon** | Eugene, OR
+<br>
+PhD in Mathematics | 2010 
+
+**University of Montana** | Missoula, MT
+<br>
+M.A. in Mathematics | 2004
+
+**University of Montana** | Missoula, MT
+<br>
+B.A. in Mathematics | 2003
+
+## Previous Experience
+
+In addition to working at The College of Idaho, I have held various visiting research 
+and teaching positions at The Technical University of Munich, The University of Oregon, Lewis and Clark College, and The Max Planck Institute for Mathematics in Bonn. 
 
 
-<div class="d-grid gap-2">
-<button class="btn btn-outline-primary btn-sm" href="research.qmd" role="button">research</button>
-<button class="btn btn-outline-primary btn-sm" href="students.qmd" role="button">student projects</button>
-<button class="btn btn-outline-primary btn-sm" href="posts.qmd" role="button">blog</button>
-<button class="btn bi bi-github btn-outline-primary btn-sm" href="https://github.com/jonnycomes" role="button"> Github</button>
-<button class="btn bi bi-linkedin btn-outline-primary btn-sm" href="https://linkedin.com/in/jcomes" role="button"> LinkedIn</button>
-</div>
+
 
 

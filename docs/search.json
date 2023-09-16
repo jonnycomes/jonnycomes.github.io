@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Hello!",
+    "title": "Jonny Comes",
     "section": "",
-    "text": "My name is Jonny. I’m an Assistant Professor of Mathematics at The College of Idaho.\nI obtained my Ph.D. in mathematics from the University of Oregon in 2010 under the supervision of Victor Ostrik. Prior to that I got my B.A. and M.A., both in mathematics, at the University of Montana. If you’d like to know more about my professional background, take a look at my cv.\nOn this site I keep lists of my publications, my students’ projects, and any resources I have written for student research projects. There is also a technical blog where I (rarely) write about various math and cs stuff I’m thinking about.\n\n\nresearch\n\n\nstudent projects\n\n\nblog\n\n\nGithub\n\n\nLinkedIn"
+    "text": "Assistant Professor of Mathematics at The College of Idaho."
   },
   {
     "objectID": "about.html",
@@ -285,5 +285,26 @@
     "title": "Student Projects",
     "section": "Resources for My Students",
     "text": "Resources for My Students\n\nNotes on Diagram Categories\nBack in 2017 I wrote some notes to introduce undergraduates to diagram categories. The notes do not assume the reader has any experience with category theory, or even abstract algebra. The notes were intended to include a second part on Linear Diagram Categories, but that part was never realized. Perhaps some day I will go back and add this part, but the current version is still (I hope) a useful introduction to the topic.  notes\n\n\nAn Introduction to Nonstandard Look and Say Sequence\nThese notes were written to introduce students to the theory of look and say sequences in the spirit of John Conway’s paper The Weird and Wonderful Chemistry of Audioactive Decay. The notes are not meant as a replacement for Conway’s delightful explanation of his methods and results. Instead, they are meant to explain how Conway’s methods and results can be generalized to other (nonstandard) look and say sequences.  notes\n\n\nThe Python look_and_say module\nI wrote a Python module that students (or anyone else) can use to explore nonstandard look and say sequences in the spirit of John Conway.  PyPI documentation GitHub Repo"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Jonny Comes",
+    "section": "Education",
+    "text": "Education\nUniversity of Oregon | Eugene, OR  PhD in Mathematics | 2010\nUniversity of Montana | Missoula, MT  M.A. in Mathematics | 2004\nUniversity of Montana | Missoula, MT  B.A. in Mathematics | 2003"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Jonny Comes",
+    "section": "Experience",
+    "text": "Experience\nIn addition to working at The College of Idaho, I have held various visiting research and teaching positions at The Technical University of Munich, The University of Oregon, Lewis and Clark College, and The Max Planck Institute for Mathematics in Bonn.\n\n\nresearch\n\n\nstudent projects\n\n\nblog\n\n\nGithub\n\n\nLinkedIn"
+  },
+  {
+    "objectID": "index.html#previous-experience",
+    "href": "index.html#previous-experience",
+    "title": "Jonny Comes",
+    "section": "Previous Experience",
+    "text": "Previous Experience\nIn addition to working at The College of Idaho, I have held various visiting research and teaching positions at The Technical University of Munich, The University of Oregon, Lewis and Clark College, and The Max Planck Institute for Mathematics in Bonn."
   }
 ]
