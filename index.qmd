@@ -1,7 +1,7 @@
 ---
 title: "Jonny Comes"
 about:
-  template: trestles
+  template: broadside
   image: rocks.png
   links:
     - icon: github
@@ -11,7 +11,6 @@ about:
       text: LinkedIn
       href: href=https://linkedin.com/in/jcomes
 ---
-
 
 Assistant Professor of Mathematics
 <br>
