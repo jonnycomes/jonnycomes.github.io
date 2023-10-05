@@ -3,6 +3,21 @@ title: "Research"
 toc: false
 page-layout: article
 title-block-banner: false
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Basics"
+        contents:
+          - index.qmd
+          - basics-knitr.qmd
+          - basics-jupyter.qmd
+      - section: "Layout"
+        contents:
+          - layout.qmd
+          - layout-knitr.qmd
+          - layout-jupyter.qmd
 ---
 
 The majority of my research is in an area of pure mathematics called representation theory. I am usually  drawn to projects involving an interplay between combinatorial objects such as partitions or graphs and algebraic objects such as (super)groups or Lie (super)algebras. I am particularly interested in diagram categories related to Brauer algebras and Deligne's categories associated with representation theory in complex rank.

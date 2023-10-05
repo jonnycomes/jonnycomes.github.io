@@ -1,8 +1,8 @@
 ---
 title: "Jonny Comes"
 about:
-  template: broadside
-  image: rocks.png
+  template: jolla
+  image: twindragon.jpg
   links:
     - icon: github
       text: Github
