@@ -222,7 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-twindragon-binary-system-for-complex-numbers" id="toc-the-twindragon-binary-system-for-complex-numbers" class="nav-link active" data-scroll-target="#the-twindragon-binary-system-for-complex-numbers">The twindragon binary system for complex numbers</a>
+  <li><a href="#standard-binary" id="toc-standard-binary" class="nav-link active" data-scroll-target="#standard-binary">Standard binary</a></li>
+  <li><a href="#the-twindragon-binary-system-for-complex-numbers" id="toc-the-twindragon-binary-system-for-complex-numbers" class="nav-link" data-scroll-target="#the-twindragon-binary-system-for-complex-numbers">The twindragon binary system for complex numbers</a>
   <ul class="collapse">
   <li><a href="#first-calculations" id="toc-first-calculations" class="nav-link" data-scroll-target="#first-calculations">First calculations</a></li>
   <li><a href="#twindragon-representations-of-units" id="toc-twindragon-representations-of-units" class="nav-link" data-scroll-target="#twindragon-representations-of-units">Twindragon representations of units</a></li>
@@ -249,10 +250,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>In the standard binary number system, every integer is represented by a string of 1’s and 0’s. To determine which integer is represented by a given string we translate the string into a sum of powers of 2. For example, in the standard binary system <span class="math inline">\(\textcolor{#17a2b8}{1100}\)</span> represents the integer <span class="math display">\[\textcolor{#17a2b8}{1}\cdot2^3+\textcolor{#17a2b8}{1}\cdot2^2+\textcolor{#17a2b8}{0}\cdot2^1+\textcolor{#17a2b8}{0}\cdot2^0,\]</span> which (in the standard decimal system) is 12. Since the representation of numbers relies on powers of 2, we say that the standard binary system uses <em>base 2</em>.</p>
-<p>This post is concerned with a (non-standard) binary number system whose base is the complex number <span class="math inline">\(i-1\)</span>. We’ll see the beautiful fractal known as the <em>twindragon</em> showing up when we visualize this number system in the complex plane, so we call this number system the <em>twindragon binary system</em>.</p>
+<section id="standard-binary" class="level3">
+<h3 class="anchored" data-anchor-id="standard-binary">Standard binary</h3>
+<p>This post is not about the standard binary number system, but it’s a decent place to start the discussion. In standard binary, every integer is represented by a string of 1’s and 0’s. To determine which integer is represented by a given string we translate the string into a sum of powers of 2. For example, in the standard binary system <span class="math inline">\(\textcolor{#17a2b8}{1100}\)</span> represents the integer <span class="math display">\[\textcolor{#17a2b8}{1}\cdot2^3+\textcolor{#17a2b8}{1}\cdot2^2+\textcolor{#17a2b8}{0}\cdot2^1+\textcolor{#17a2b8}{0}\cdot2^0,\]</span> which (in the standard decimal system) is 12. Since the representation of numbers relies on powers of 2, we say that the standard binary system uses <em>base 2</em>.</p>
+</section>
 <section id="the-twindragon-binary-system-for-complex-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="the-twindragon-binary-system-for-complex-numbers">The twindragon binary system for complex numbers</h2>
+<p>This post is concerned with a (non-standard) binary number system whose base is the complex number <span class="math inline">\(i-1\)</span>. We’ll see the beautiful fractal known as the <em>twindragon</em> showing up when we visualize this number system in the complex plane, so we call this number system the <em>twindragon binary system</em>.</p>
 <section id="first-calculations" class="level3">
 <h3 class="anchored" data-anchor-id="first-calculations">First calculations</h3>
 <p>Let’s look at the same binary string 1100 from above, but this time using the new base of <span class="math inline">\(i-1\)</span>. In the twindragon binary system <span class="math inline">\(\textcolor{#e95420}{1100}\)</span> represents <span id="eq-first-twindragon-calc"><span class="math display">\[\textcolor{#e95420}{1}(i-1)^3+\textcolor{#e95420}{1}(i-1)^2+\textcolor{#e95420}{0}(i-1)^1+\textcolor{#e95420}{0}(i-1)^0. \tag{1}\]</span></span> For another example, in twindragon binary <span class="math inline">\(1111001\)</span> represents <span id="eq-second-twindragon-calc"><span class="math display">\[(i-1)^6+(i-1)^5+(i-1)^4+(i-1)^3+(i-1)^0. \tag{2}\]</span></span> To simplify these expressions, it will be useful to know powers of <span class="math inline">\(i-1\)</span>. Here are the first several: <span class="math display">\[\begin{array}{|c|c|}
@@ -304,24 +308,24 @@ i &amp; 11 \\
 + &amp; 101010\\
 \hline
 \end{array}\]</span> Starting from the right, the first three columns of bits are easily handled, leaving us at the following point: <span class="math display">\[\begin{array}{cr}
-  &amp; 11\textcolor{red}{1}\textcolor{#aea79f}{001}\\
-+ &amp; 10\textcolor{red}{1}\textcolor{#aea79f}{010}\\
+  &amp; 11\textcolor{#e95420}{1}\textcolor{#aea79f}{001}\\
++ &amp; 10\textcolor{#e95420}{1}\textcolor{#aea79f}{010}\\
 \hline
   &amp; 011
 \end{array}\]</span> Now, we carry the next two 1’s according to the carry rule (<a href="#eq-carry-rule">4</a>) leaving us with the following: <span class="math display">\[\begin{array}{cr}
-  &amp; \textcolor{red}{1100}\phantom{000}\\
+  &amp; \textcolor{#e95420}{1100}\phantom{000}\\
   &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}001}\\
 + &amp; 10\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}010}\\
 \hline
   &amp; 0011
 \end{array}\]</span> The next column of bits is easily handled, leaving us in a position where we will have to carry two 1’s again: <span class="math display">\[\begin{array}{cr}
-  &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{00}\phantom{000}\\
-  &amp;  \textcolor{red}{1}\textcolor{#aea79f}{11001}\\
+  &amp; 1\textcolor{#e95420}{1}\textcolor{#aea79f}{00}\phantom{000}\\
+  &amp;  \textcolor{#e95420}{1}\textcolor{#aea79f}{11001}\\
 + &amp;   1\textcolor{#aea79f}{01010}\\
 \hline
   &amp; 10011
 \end{array}\]</span> Again, we carry according to the carry rule (<a href="#eq-carry-rule">4</a>) leaving us with <span class="math display">\[\begin{array}{cr}
-  &amp; \textcolor{red}{1100}\phantom{00000} \\
+  &amp; \textcolor{#e95420}{1100}\phantom{00000} \\
   &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00}\phantom{000}\\
   &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}11001}\\
 + &amp;   \textcolor{#aea79f}{101010}\\
@@ -345,13 +349,13 @@ i &amp; 11 \\
   &amp;   0
 \end{array} \tag{5}\]</span></span> Observe that the sum in (<a href="#eq-cancel-rule">5</a>) cannot be computed in a finite number of steps using just the carry rule (<a href="#eq-carry-rule">4</a>). Indeed, applying the carry rule to the rightmost bits in the sum above gives the following <span class="math display">\[
 \begin{array}{cr}
-  &amp;  1\textcolor{red}{1}\\
-+ &amp; 11\textcolor{red}{1}\\
+  &amp;  1\textcolor{#e95420}{1}\\
++ &amp; 11\textcolor{#e95420}{1}\\
 \hline
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &amp; \textcolor{red}{1100}\\
+  &amp; \textcolor{#e95420}{1100}\\
   &amp;  1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
 + &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
 \hline
@@ -369,14 +373,14 @@ i &amp; 11 \\
 \hline
 \end{array}\]</span> To start, note that we can use the cancel rule (<a href="#eq-cancel-rule">5</a>) as follows: <span class="math display">\[
 \begin{array}{cr}
-  &amp; 11101\textcolor{red}{111}1\\
-+ &amp;  10110\textcolor{red}{11}0\\
+  &amp; 11101\textcolor{#e95420}{111}1\\
++ &amp;  10110\textcolor{#e95420}{11}0\\
 \hline
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &amp; 11101\textcolor{red}{000}1\\
-+ &amp;  10110\textcolor{red}{00}0\\
+  &amp; 11101\textcolor{#e95420}{000}1\\
++ &amp;  10110\textcolor{#e95420}{00}0\\
 \hline
 \end{array}
 \]</span> Now, we proceed from right to left, and nothing interesting happens (thanks to all the new 0’s) until we reach the following point: <span class="math display">\[\begin{array}{cr}
@@ -387,14 +391,14 @@ i &amp; 11 \\
 \end{array}\]</span> Next, we apply the carry rule (<a href="#eq-carry-rule">4</a>): <span class="math display">\[
 \begin{array}{cr}
 \\
-  &amp; 1110\textcolor{red}{1}\textcolor{#aea79f}{0001}\\
-+ &amp;  101\textcolor{red}{1}\textcolor{#aea79f}{0000}\\
+  &amp; 1110\textcolor{#e95420}{1}\textcolor{#aea79f}{0001}\\
++ &amp;  101\textcolor{#e95420}{1}\textcolor{#aea79f}{0000}\\
 \hline
   &amp; 0001
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &amp;  \textcolor{red}{1100}\phantom{0000}\\
+  &amp;  \textcolor{#e95420}{1100}\phantom{0000}\\
   &amp; 1110\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0001}\\
 + &amp;  101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0000}\\
 \hline
@@ -402,16 +406,16 @@ i &amp; 11 \\
 \end{array}
 \]</span> Now, we can once again apply the cancel rule (<a href="#eq-cancel-rule">5</a>): <span class="math display">\[
 \begin{array}{cr}
-  &amp;  \textcolor{red}{11}0\textcolor{#aea79f}{0}\phantom{0000}\\
-  &amp; \textcolor{red}{111}0\textcolor{#aea79f}{10001}\\
+  &amp;  \textcolor{#e95420}{11}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  &amp; \textcolor{#e95420}{111}0\textcolor{#aea79f}{10001}\\
 + &amp;  101\textcolor{#aea79f}{10000}\\
 \hline
   &amp; 00001
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &amp;  \textcolor{red}{00}0\textcolor{#aea79f}{0}\phantom{0000}\\
-  &amp; \textcolor{red}{000}0\textcolor{#aea79f}{10001}\\
+  &amp;  \textcolor{#e95420}{00}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  &amp; \textcolor{#e95420}{000}0\textcolor{#aea79f}{10001}\\
 + &amp;  101\textcolor{#aea79f}{10000}\\
 \hline
   &amp; 00001
@@ -457,12 +461,12 @@ Proof
     \hline
       &amp;&amp;&amp;&amp;&amp; 0\cdots0
     \end{array}\]</span> Where at least one of <span class="math inline">\(a_j\)</span> or <span class="math inline">\(b_j\)</span> is 1. If the other is 0, then we add that column without a carry, the remaining columns will have one fewer 1, and we are done by induction. Thus we only need to consider the case where both <span class="math inline">\(a_j\)</span> and <span class="math inline">\(b_j\)</span> are 1, and we carry: <span class="math display">\[\begin{array}{ccccccc}
-      &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; a_{j+2} &amp; a_{j+1} &amp; \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
-    + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; b_{j+2} &amp; b_{j+1} &amp; \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
+      &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; a_{j+2} &amp; a_{j+1} &amp; \textcolor{#e95420}{1}~\textcolor{#aea79f}{0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; b_{j+2} &amp; b_{j+1} &amp; \textcolor{#e95420}{1}~\textcolor{#aea79f}{0\cdots0}\\
     \hline
       &amp;&amp;&amp;&amp;&amp;&amp; \phantom{1~}0\cdots0
     \end{array}\]</span> <span class="math display">\[\begin{array}{ccccccr}
-     &amp;&amp;&amp;\textcolor{red}{1}&amp;\textcolor{red}{1}&amp;\textcolor{red}{0}&amp; \textcolor{red}{0}~\phantom{0\cdots0} \\
+     &amp;&amp;&amp;\textcolor{#e95420}{1}&amp;\textcolor{#e95420}{1}&amp;\textcolor{#e95420}{0}&amp; \textcolor{#e95420}{0}~\phantom{0\cdots0} \\
       &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; a_{j+2} &amp; a_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; b_{j+2} &amp; b_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
     \hline
@@ -474,14 +478,14 @@ Proof
     \hline
       &amp;&amp;&amp;&amp;&amp;&amp; 0~0\cdots0
     \end{array}\]</span> Now, if <span class="math inline">\(a_{j+1}\)</span> and <span class="math inline">\(b_{j+1}\)</span> are both 1’s, then we can apply the cancel rule (and we’re done by induction), so it suffices to consider the case where they are both 0. Then we add the <span class="math inline">\((j+1)^{\text{st}}\)</span> column and we perform a carry on the <span class="math inline">\((j+2)^{\text{nd}}\)</span> column: <span class="math display">\[\begin{array}{ccccccr}
-     &amp;&amp;&amp;&amp;&amp; 1 &amp; \textcolor{red}{1} ~ \textcolor{#aea79f}{0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
-      &amp;  a_n &amp; \cdots &amp; a_{j+5} &amp; a_{j+4} &amp; a_{j+3} &amp; \textcolor{red}{1} ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+     &amp;&amp;&amp;&amp;&amp; 1 &amp; \textcolor{#e95420}{1} ~ \textcolor{#aea79f}{0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
+      &amp;  a_n &amp; \cdots &amp; a_{j+5} &amp; a_{j+4} &amp; a_{j+3} &amp; \textcolor{#e95420}{1} ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &amp;  b_n &amp; \cdots &amp; b_{j+5} &amp; b_{j+4} &amp; b_{j+3} &amp; 0 ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     \hline
       &amp;&amp;&amp;&amp;&amp;&amp; 0~0~0\cdots0
     \end{array}\]</span></p>
 <p><span class="math display">\[\begin{array}{ccccccr}
-     &amp; &amp; &amp; \textcolor{red}{1} &amp; \textcolor{red}{1} &amp; \textcolor{red}{0} &amp; \textcolor{red}{0}\phantom{~0~0~0\cdots0}\\
+     &amp; &amp; &amp; \textcolor{#e95420}{1} &amp; \textcolor{#e95420}{1} &amp; \textcolor{#e95420}{0} &amp; \textcolor{#e95420}{0}\phantom{~0~0~0\cdots0}\\
      &amp;&amp;&amp;&amp;&amp; 1 &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
       &amp;  a_n &amp; \cdots &amp; a_{j+5} &amp; a_{j+4} &amp; a_{j+3} &amp;   \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &amp;  b_n &amp; \cdots &amp; b_{j+5} &amp; b_{j+4} &amp; b_{j+3} &amp;   \textcolor{#aea79f}{0~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
@@ -524,8 +528,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
       &amp;     1\\
       &amp;     1\\
       &amp;    11\\
-      &amp;   \textcolor{red}{ 11}\\
-      &amp; 11\textcolor{red}{111}\\
+      &amp;   \textcolor{#e95420}{ 11}\\
+      &amp; 11\textcolor{#e95420}{111}\\
       &amp; 1\textcolor{blue}{11}11\\
     + &amp; \textcolor{blue}{111}11\\
     \hline
@@ -536,8 +540,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
       &amp;     1\\
       &amp;     1\\
       &amp;    11\\
-      &amp;   \textcolor{red}{ 00}\\
-      &amp; 11\textcolor{red}{000}\\
+      &amp;   \textcolor{#e95420}{ 00}\\
+      &amp; 11\textcolor{#e95420}{000}\\
       &amp; 1\textcolor{blue}{00}11\\
     + &amp; \textcolor{blue}{000}11\\
     \hline
@@ -552,8 +556,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \hline
     \end{array}\]</span> Next, we apply the carry rule (<a href="#eq-carry-rule">4</a>) one time to the rightmost column to get <span class="math display">\[
     \begin{array}{cr}
-      &amp;     \textcolor{red}{1}\\
-      &amp;     \textcolor{red}{1}\\
+      &amp;     \textcolor{#e95420}{1}\\
+      &amp;     \textcolor{#e95420}{1}\\
       &amp;     1\\
       &amp;    11\\
       &amp; 10011\\
@@ -562,7 +566,7 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      &amp; \textcolor{red}{1100}\\
+      &amp; \textcolor{#e95420}{1100}\\
       &amp;     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
       &amp;     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
       &amp;     1\\
@@ -573,29 +577,29 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \end{array}\]</span> Dropping bits (and removing crossed out ones) gives the following, where we apply the cancel rule (<a href="#eq-cancel-rule">5</a>): <span class="math display">\[
     \begin{array}{cr}
       &amp;     1\\
-      &amp;    \textcolor{red}{11}\\
-      &amp; 11\textcolor{red}{111}\\
+      &amp;    \textcolor{#e95420}{11}\\
+      &amp; 11\textcolor{#e95420}{111}\\
     + &amp; 11011\\
     \hline
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
       &amp;     1\\
-      &amp;    \textcolor{red}{00}\\
-      &amp; 11\textcolor{red}{000}\\
+      &amp;    \textcolor{#e95420}{00}\\
+      &amp; 11\textcolor{#e95420}{000}\\
     + &amp; 11011\\
     \hline
     \end{array}
     \]</span> Let’s drop the bits again, and then we apply the carry rule to the right column: <span class="math display">\[
     \begin{array}{cr}
     \\
-      &amp; 1100\textcolor{red}{1}\\
-    + &amp; 1101\textcolor{red}{1}\\
+      &amp; 1100\textcolor{#e95420}{1}\\
+    + &amp; 1101\textcolor{#e95420}{1}\\
     \hline
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      &amp; \textcolor{red}{1100}\\
+      &amp; \textcolor{#e95420}{1100}\\
       &amp; 1100\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
     + &amp; 1101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
     \hline
@@ -610,15 +614,15 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \end{array}
     \]</span> The next column requires a carry: <span class="math display">\[
     \begin{array}{cr}
-      &amp; \textcolor{red}{1}\textcolor{#aea79f}{100}\\
-      &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\
+      &amp; \textcolor{#e95420}{1}\textcolor{#aea79f}{100}\\
+      &amp; 1\textcolor{#e95420}{1}\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\
     + &amp; 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\
     \hline
       &amp; 110
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      &amp; \textcolor{red}{1100}\phantom{000}\\
+      &amp; \textcolor{#e95420}{1100}\phantom{000}\\
       &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
       &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
     + &amp; 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\
@@ -636,14 +640,14 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \]</span> The next column uses a carry rule: <span class="math display">\[
     \begin{array}{cr}
       &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
-      &amp; \textcolor{red}{1}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
-    + &amp; 11\textcolor{red}{1}\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\
+      &amp; \textcolor{#e95420}{1}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#e95420}{1}\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\
     \hline
       &amp; 1110
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      &amp; \textcolor{red}{1100}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      &amp; \textcolor{#e95420}{1100}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
       &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
     + &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
     \hline
@@ -660,15 +664,15 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \begin{array}{rl}
     \begin{array}{cr}
     \\
-      &amp; \textcolor{red}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
-    + &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+      &amp; \textcolor{#e95420}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 1\textcolor{#e95420}{1}\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
     \hline
       &amp; 101110
     \end{array}
     &amp;
     \quad\leadsto\quad
     \begin{array}{cr}
-     &amp; \textcolor{red}{1100}\phantom{000000}\\
+     &amp; \textcolor{#e95420}{1100}\phantom{000000}\\
       &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
     + &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
     \hline
@@ -696,8 +700,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" data-startfrom="548" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 547;"><span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { chart } <span class="im">from</span> <span class="st">"d/3964d6d505b9f008"</span></span>
-<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="550" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 549;"><span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { chart } <span class="im">from</span> <span class="st">"d/3964d6d505b9f008"</span></span>
+<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -728,8 +732,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-startfrom="570" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 569;"><span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fractionChart } <span class="im">from</span> <span class="st">"d/526bb5e596bf883a"</span></span>
-<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a>fractionChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="572" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 571;"><span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fractionChart } <span class="im">from</span> <span class="st">"d/526bb5e596bf883a"</span></span>
+<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a>fractionChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -753,8 +757,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" data-startfrom="579" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 578;"><span id="cb3-579"><a href="#cb3-579" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { twindragonChart } <span class="im">from</span> <span class="st">"d/60ea50d21dd08209"</span></span>
-<span id="cb3-580"><a href="#cb3-580" aria-hidden="true" tabindex="-1"></a>twindragonChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="581" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 580;"><span id="cb3-581"><a href="#cb3-581" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { twindragonChart } <span class="im">from</span> <span class="st">"d/60ea50d21dd08209"</span></span>
+<span id="cb3-582"><a href="#cb3-582" aria-hidden="true" tabindex="-1"></a>twindragonChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>

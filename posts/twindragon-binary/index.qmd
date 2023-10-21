@@ -14,12 +14,14 @@ crossref:
   eq-prefix: '' 
 ---
 
-In the standard binary number system, every integer is represented by a string of 1's and 0's. To determine which integer is represented by a given string we translate the string into a sum of powers of 2. For example, in the standard binary system $\textcolor{#17a2b8}{1100}$ represents the integer 
+### Standard binary
+
+This post is not about the standard binary number system, but it's a decent place to start the discussion. In standard binary, every integer is represented by a string of 1's and 0's. To determine which integer is represented by a given string we translate the string into a sum of powers of 2. For example, in the standard binary system $\textcolor{#17a2b8}{1100}$ represents the integer 
 $$\textcolor{#17a2b8}{1}\cdot2^3+\textcolor{#17a2b8}{1}\cdot2^2+\textcolor{#17a2b8}{0}\cdot2^1+\textcolor{#17a2b8}{0}\cdot2^0,$$ which (in the standard decimal system) is 12. Since the representation of numbers relies on powers of 2, we say that the standard binary system uses *base 2*.
 
-This post is concerned with a (non-standard) binary number system whose base is the complex number $i-1$. We'll see the beautiful fractal known as the *twindragon* showing up when we visualize this number system in the complex plane, so we call this number system the *twindragon binary system*. 
-
 ## The twindragon binary system for complex numbers
+
+This post is concerned with a (non-standard) binary number system whose base is the complex number $i-1$. We'll see the beautiful fractal known as the *twindragon* showing up when we visualize this number system in the complex plane, so we call this number system the *twindragon binary system*. 
 
 ### First calculations
 
@@ -87,14 +89,14 @@ $$\begin{array}{cr}
 \end{array}$$
 Starting from the right, the first three columns of bits are easily handled, leaving us at the following point:
 $$\begin{array}{cr}
-  & 11\textcolor{red}{1}\textcolor{#aea79f}{001}\\
-+ & 10\textcolor{red}{1}\textcolor{#aea79f}{010}\\ 
+  & 11\textcolor{#e95420}{1}\textcolor{#aea79f}{001}\\
++ & 10\textcolor{#e95420}{1}\textcolor{#aea79f}{010}\\ 
 \hline
   & 011
 \end{array}$$
 Now, we carry the next two 1's according to the carry rule (@eq-carry-rule) leaving us with the following:
 $$\begin{array}{cr}
-  & \textcolor{red}{1100}\phantom{000}\\
+  & \textcolor{#e95420}{1100}\phantom{000}\\
   & 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}001}\\
 + & 10\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}010}\\ 
 \hline
@@ -102,15 +104,15 @@ $$\begin{array}{cr}
 \end{array}$$
 The next column of bits is easily handled, leaving us in a position where we will have to carry two 1's again:
 $$\begin{array}{cr}
-  & 1\textcolor{red}{1}\textcolor{#aea79f}{00}\phantom{000}\\
-  &  \textcolor{red}{1}\textcolor{#aea79f}{11001}\\
+  & 1\textcolor{#e95420}{1}\textcolor{#aea79f}{00}\phantom{000}\\
+  &  \textcolor{#e95420}{1}\textcolor{#aea79f}{11001}\\
 + &   1\textcolor{#aea79f}{01010}\\ 
 \hline
   & 10011
 \end{array}$$
 Again, we carry according to the carry rule (@eq-carry-rule) leaving us with
 $$\begin{array}{cr}
-  & \textcolor{red}{1100}\phantom{00000} \\
+  & \textcolor{#e95420}{1100}\phantom{00000} \\
   & 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00}\phantom{000}\\
   &  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}11001}\\
 + &   \textcolor{#aea79f}{101010}\\ 
@@ -139,13 +141,13 @@ $$\begin{array}{cr}
 Observe that the sum in (@eq-cancel-rule) cannot be computed in a finite number of steps using just the carry rule (@eq-carry-rule). Indeed, applying the carry rule to the rightmost bits in the sum above gives the following 
 $$
 \begin{array}{cr}
-  &  1\textcolor{red}{1}\\
-+ & 11\textcolor{red}{1}\\ 
+  &  1\textcolor{#e95420}{1}\\
++ & 11\textcolor{#e95420}{1}\\ 
 \hline
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  & \textcolor{red}{1100}\\
+  & \textcolor{#e95420}{1100}\\
   &  1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
 + & 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\ 
 \hline
@@ -173,14 +175,14 @@ $$\begin{array}{cr}
 To start, note that we can use the cancel rule (@eq-cancel-rule) as follows:
 $$
 \begin{array}{cr}
-  & 11101\textcolor{red}{111}1\\
-+ &  10110\textcolor{red}{11}0\\ 
+  & 11101\textcolor{#e95420}{111}1\\
++ &  10110\textcolor{#e95420}{11}0\\ 
 \hline
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  & 11101\textcolor{red}{000}1\\
-+ &  10110\textcolor{red}{00}0\\ 
+  & 11101\textcolor{#e95420}{000}1\\
++ &  10110\textcolor{#e95420}{00}0\\ 
 \hline
 \end{array}
 $$
@@ -195,14 +197,14 @@ Next, we apply the carry rule (@eq-carry-rule):
 $$
 \begin{array}{cr}
 \\
-  & 1110\textcolor{red}{1}\textcolor{#aea79f}{0001}\\
-+ &  101\textcolor{red}{1}\textcolor{#aea79f}{0000}\\ 
+  & 1110\textcolor{#e95420}{1}\textcolor{#aea79f}{0001}\\
++ &  101\textcolor{#e95420}{1}\textcolor{#aea79f}{0000}\\ 
 \hline
   & 0001
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &  \textcolor{red}{1100}\phantom{0000}\\
+  &  \textcolor{#e95420}{1100}\phantom{0000}\\
   & 1110\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0001}\\
 + &  101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0000}\\ 
 \hline
@@ -212,16 +214,16 @@ $$
 Now, we can once again apply the cancel rule (@eq-cancel-rule):
 $$
 \begin{array}{cr}
-  &  \textcolor{red}{11}0\textcolor{#aea79f}{0}\phantom{0000}\\
-  & \textcolor{red}{111}0\textcolor{#aea79f}{10001}\\
+  &  \textcolor{#e95420}{11}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  & \textcolor{#e95420}{111}0\textcolor{#aea79f}{10001}\\
 + &  101\textcolor{#aea79f}{10000}\\ 
 \hline
   & 00001
 \end{array}
 \quad\leadsto\quad
 \begin{array}{cr}
-  &  \textcolor{red}{00}0\textcolor{#aea79f}{0}\phantom{0000}\\
-  & \textcolor{red}{000}0\textcolor{#aea79f}{10001}\\
+  &  \textcolor{#e95420}{00}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  & \textcolor{#e95420}{000}0\textcolor{#aea79f}{10001}\\
 + &  101\textcolor{#aea79f}{10000}\\ 
 \hline
   & 00001
@@ -269,13 +271,13 @@ The proof that the algorithm always terminates can be found below.
     \end{array}$$
     Where at least one of $a_j$ or $b_j$ is 1. If the other is 0, then we add that column without a carry,  the remaining columns will have one fewer 1, and we are done by induction. Thus we only need to consider the case where both $a_j$ and $b_j$ are 1, and we carry:
     $$\begin{array}{ccccccc}
-      &  a_n & \cdots & a_{j+3} & a_{j+2} & a_{j+1} & \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
-    + &  b_n & \cdots & b_{j+3} & b_{j+2} & b_{j+1} & \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
+      &  a_n & \cdots & a_{j+3} & a_{j+2} & a_{j+1} & \textcolor{#e95420}{1}~\textcolor{#aea79f}{0\cdots0}\\
+    + &  b_n & \cdots & b_{j+3} & b_{j+2} & b_{j+1} & \textcolor{#e95420}{1}~\textcolor{#aea79f}{0\cdots0}\\
     \hline
       &&&&&& \phantom{1~}0\cdots0
     \end{array}$$
     $$\begin{array}{ccccccr}
-     &&&\textcolor{red}{1}&\textcolor{red}{1}&\textcolor{red}{0}& \textcolor{red}{0}~\phantom{0\cdots0} \\
+     &&&\textcolor{#e95420}{1}&\textcolor{#e95420}{1}&\textcolor{#e95420}{0}& \textcolor{#e95420}{0}~\phantom{0\cdots0} \\
       &  a_n & \cdots & a_{j+3} & a_{j+2} & a_{j+1} &  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &  b_n & \cdots & b_{j+3} & b_{j+2} & b_{j+1} &  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
     \hline
@@ -291,15 +293,15 @@ The proof that the algorithm always terminates can be found below.
     \end{array}$$
     Now, if $a_{j+1}$ and $b_{j+1}$ are both 1's, then we can apply the cancel rule (and we're done by induction), so it suffices to consider the case where they are both 0. Then we add the $(j+1)^{\text{st}}$ column and we perform a carry on the $(j+2)^{\text{nd}}$ column:
     $$\begin{array}{ccccccr}
-     &&&&& 1 & \textcolor{red}{1} ~ \textcolor{#aea79f}{0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
-      &  a_n & \cdots & a_{j+5} & a_{j+4} & a_{j+3} & \textcolor{red}{1} ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+     &&&&& 1 & \textcolor{#e95420}{1} ~ \textcolor{#aea79f}{0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
+      &  a_n & \cdots & a_{j+5} & a_{j+4} & a_{j+3} & \textcolor{#e95420}{1} ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &  b_n & \cdots & b_{j+5} & b_{j+4} & b_{j+3} & 0 ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     \hline
       &&&&&& 0~0~0\cdots0
     \end{array}$$
 
     $$\begin{array}{ccccccr}
-     & & & \textcolor{red}{1} & \textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{0}\phantom{~0~0~0\cdots0}\\
+     & & & \textcolor{#e95420}{1} & \textcolor{#e95420}{1} & \textcolor{#e95420}{0} & \textcolor{#e95420}{0}\phantom{~0~0~0\cdots0}\\
      &&&&& 1 & \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
       &  a_n & \cdots & a_{j+5} & a_{j+4} & a_{j+3} &   \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
     + &  b_n & \cdots & b_{j+5} & b_{j+4} & b_{j+3} &   \textcolor{#aea79f}{0~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
@@ -350,8 +352,8 @@ To see that every Gaussian integer has a twindragon representation, notice that 
       &     1\\
       &     1\\
       &    11\\ 
-      &   \textcolor{red}{ 11}\\ 
-      & 11\textcolor{red}{111}\\ 
+      &   \textcolor{#e95420}{ 11}\\ 
+      & 11\textcolor{#e95420}{111}\\ 
       & 1\textcolor{blue}{11}11\\ 
     + & \textcolor{blue}{111}11\\ 
     \hline
@@ -362,8 +364,8 @@ To see that every Gaussian integer has a twindragon representation, notice that 
       &     1\\
       &     1\\
       &    11\\ 
-      &   \textcolor{red}{ 00}\\ 
-      & 11\textcolor{red}{000}\\ 
+      &   \textcolor{#e95420}{ 00}\\ 
+      & 11\textcolor{#e95420}{000}\\ 
       & 1\textcolor{blue}{00}11\\ 
     + & \textcolor{blue}{000}11\\ 
     \hline
@@ -382,8 +384,8 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     Next, we apply the carry rule (@eq-carry-rule) one time to the rightmost column to get
     $$
     \begin{array}{cr}
-      &     \textcolor{red}{1}\\
-      &     \textcolor{red}{1}\\
+      &     \textcolor{#e95420}{1}\\
+      &     \textcolor{#e95420}{1}\\
       &     1\\
       &    11\\ 
       & 10011\\ 
@@ -392,7 +394,7 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      & \textcolor{red}{1100}\\
+      & \textcolor{#e95420}{1100}\\
       &     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
       &     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
       &     1\\
@@ -405,16 +407,16 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     $$
     \begin{array}{cr}
       &     1\\
-      &    \textcolor{red}{11}\\ 
-      & 11\textcolor{red}{111}\\ 
+      &    \textcolor{#e95420}{11}\\ 
+      & 11\textcolor{#e95420}{111}\\ 
     + & 11011\\ 
     \hline
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
       &     1\\
-      &    \textcolor{red}{00}\\ 
-      & 11\textcolor{red}{000}\\ 
+      &    \textcolor{#e95420}{00}\\ 
+      & 11\textcolor{#e95420}{000}\\ 
     + & 11011\\ 
     \hline
     \end{array}
@@ -423,13 +425,13 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     $$
     \begin{array}{cr}
     \\
-      & 1100\textcolor{red}{1}\\ 
-    + & 1101\textcolor{red}{1}\\ 
+      & 1100\textcolor{#e95420}{1}\\ 
+    + & 1101\textcolor{#e95420}{1}\\ 
     \hline
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      & \textcolor{red}{1100}\\
+      & \textcolor{#e95420}{1100}\\
       & 1100\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\ 
     + & 1101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\ 
     \hline
@@ -448,15 +450,15 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     The next column requires a carry:
     $$
     \begin{array}{cr}
-      & \textcolor{red}{1}\textcolor{#aea79f}{100}\\
-      & 1\textcolor{red}{1}\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\ 
+      & \textcolor{#e95420}{1}\textcolor{#aea79f}{100}\\
+      & 1\textcolor{#e95420}{1}\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\ 
     + & 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\ 
     \hline
       & 110
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      & \textcolor{red}{1100}\phantom{000}\\
+      & \textcolor{#e95420}{1100}\phantom{000}\\
       & \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
       & 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
     + & 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\ 
@@ -478,14 +480,14 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     $$
     \begin{array}{cr}
       & \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
-      & \textcolor{red}{1}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
-    + & 11\textcolor{red}{1}\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\ 
+      & \textcolor{#e95420}{1}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
+    + & 11\textcolor{#e95420}{1}\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\ 
     \hline
       & 1110
     \end{array}
     \quad\leadsto\quad
     \begin{array}{cr}
-      & \textcolor{red}{1100}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      & \textcolor{#e95420}{1100}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
       & \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
     + & 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\ 
     \hline
@@ -506,15 +508,15 @@ To see that every Gaussian integer has a twindragon representation, notice that 
     \begin{array}{rl}
     \begin{array}{cr}
     \\
-      & \textcolor{red}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
-    + & 1\textcolor{red}{1}\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\ 
+      & \textcolor{#e95420}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
+    + & 1\textcolor{#e95420}{1}\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\ 
     \hline
       & 101110
     \end{array}
     &
     \quad\leadsto\quad
     \begin{array}{cr}
-     & \textcolor{red}{1100}\phantom{000000}\\
+     & \textcolor{#e95420}{1100}\phantom{000000}\\
       & \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\ 
     + & 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\ 
     \hline
