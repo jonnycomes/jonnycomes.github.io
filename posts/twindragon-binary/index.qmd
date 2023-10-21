@@ -587,7 +587,7 @@ twindragonChart
 
 ## References
 
-I first learned about the twindragon binary number system and the corresponding fractiling of the complex plane from Edgar's book [Measure, Topology, and Fractal Geometry](https://www.amazon.com/Measure-Topology-Geometry-Undergraduate-Mathematics/dp/0387747486). 
+I first learned about the twindragon binary number system and the corresponding fractiling of the complex plane from G. Edgar's book [Measure, Topology, and Fractal Geometry](https://www.amazon.com/Measure-Topology-Geometry-Undergraduate-Mathematics/dp/0387747486). 
 The first appearance the twindragon binary number system is in W. Penny's [A "Binary" System for Complex Numbers](https://dl.acm.org/doi/pdf/10.1145/321264.321274). I believe the first connection between the number system and the twindragon fractal is due to D. Knuth: [Number representations and dragon curves](https://www-cs-faculty.stanford.edu/~knuth/fg.html).
 
 
