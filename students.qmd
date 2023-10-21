@@ -33,8 +33,6 @@ I wrote a Python module that students (or anyone else) can use to explore nonsta
 
 
 
-
-
 ## My Students' Projects
 
 #### A Basis Theorem for the Jellyfish Brauer Category $JB(2)$
