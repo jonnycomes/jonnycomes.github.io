@@ -660,8 +660,7 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \hline
       &amp; 101110
     \end{array}
-    \]</span> One last carry and the rest is clear: <span class="math display">\[
-    \begin{array}{rl}
+    \]</span> One last carry: <span class="math display">\[
     \begin{array}{cr}
     \\
       &amp; \textcolor{#e95420}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
@@ -669,7 +668,6 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
     \hline
       &amp; 101110
     \end{array}
-    &amp;
     \quad\leadsto\quad
     \begin{array}{cr}
      &amp; \textcolor{#e95420}{1100}\phantom{000000}\\
@@ -679,15 +677,13 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
       &amp; 101110
     \end{array}
     \\
-    &amp;
-    \quad\leadsto\quad
+    \]</span> The rest is clear: <span class="math display">\[
     \begin{array}{cr}
      &amp; \textcolor{#aea79f}{1100}\phantom{000000}\\
       &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
     + &amp; \textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
     \hline
       &amp; 1110101110
-    \end{array}
     \end{array}
     \]</span> Thus, we have found that the twindragon representation of <span class="math inline">\(-3+5i\)</span> is <span class="math inline">\(1110101110\)</span>.
 </details>
@@ -700,8 +696,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" data-startfrom="550" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 549;"><span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { chart } <span class="im">from</span> <span class="st">"d/3964d6d505b9f008"</span></span>
-<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="548" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 547;"><span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { chart } <span class="im">from</span> <span class="st">"d/3964d6d505b9f008"</span></span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -732,8 +728,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-startfrom="572" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 571;"><span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fractionChart } <span class="im">from</span> <span class="st">"d/526bb5e596bf883a"</span></span>
-<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a>fractionChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="570" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 569;"><span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fractionChart } <span class="im">from</span> <span class="st">"d/526bb5e596bf883a"</span></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a>fractionChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -757,8 +753,8 @@ Let’s see what happens: <span class="math display">\[\begin{array}{cr}
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" data-startfrom="581" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 580;"><span id="cb3-581"><a href="#cb3-581" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { twindragonChart } <span class="im">from</span> <span class="st">"d/60ea50d21dd08209"</span></span>
-<span id="cb3-582"><a href="#cb3-582" aria-hidden="true" tabindex="-1"></a>twindragonChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="579" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 578;"><span id="cb3-579"><a href="#cb3-579" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { twindragonChart } <span class="im">from</span> <span class="st">"d/60ea50d21dd08209"</span></span>
+<span id="cb3-580"><a href="#cb3-580" aria-hidden="true" tabindex="-1"></a>twindragonChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
