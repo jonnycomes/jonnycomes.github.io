@@ -2,7 +2,7 @@
 title: "Twindragons and a Binary System for Complex Numbers"
 author: "Jonny Comes"
 date: "2023-10-21"
-categories: [twindragon]
+categories: [twindragon, number systems, fractals]
 image: twindragon.jpg
 jupyter: python3
 format:
