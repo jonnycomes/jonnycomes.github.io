@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jonny Comes">
+<meta name="dcterms.date" content="2023-10-21">
+
+<title>Jonny Comes - Twindragons and a Binary System for Complex Numbers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Jonny Comes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../students.html">
+ <span class="menu-text">Student Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html">
+ <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jonnycomes"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/jcomes"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Twindragons and a Binary System for Complex Numbers</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">twindragon</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jonny Comes </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 21, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-twindragon-binary-system-for-complex-numbers" id="toc-the-twindragon-binary-system-for-complex-numbers" class="nav-link active" data-scroll-target="#the-twindragon-binary-system-for-complex-numbers">The twindragon binary system for complex numbers</a>
+  <ul class="collapse">
+  <li><a href="#first-calculations" id="toc-first-calculations" class="nav-link" data-scroll-target="#first-calculations">First calculations</a></li>
+  <li><a href="#twindragon-representations-of-units" id="toc-twindragon-representations-of-units" class="nav-link" data-scroll-target="#twindragon-representations-of-units">Twindragon representations of units</a></li>
+  </ul></li>
+  <li><a href="#twindragon-addition-algorithm" id="toc-twindragon-addition-algorithm" class="nav-link" data-scroll-target="#twindragon-addition-algorithm">Twindragon addition algorithm</a>
+  <ul class="collapse">
+  <li><a href="#a-twindragon-carry-rule" id="toc-a-twindragon-carry-rule" class="nav-link" data-scroll-target="#a-twindragon-carry-rule">A twindragon carry rule</a></li>
+  <li><a href="#a-twindragon-cancel-rule" id="toc-a-twindragon-cancel-rule" class="nav-link" data-scroll-target="#a-twindragon-cancel-rule">A twindragon cancel rule</a></li>
+  <li><a href="#the-addition-algorithm" id="toc-the-addition-algorithm" class="nav-link" data-scroll-target="#the-addition-algorithm">The addition algorithm</a></li>
+  </ul></li>
+  <li><a href="#twindragon-representations-of-all-gaussian-integers" id="toc-twindragon-representations-of-all-gaussian-integers" class="nav-link" data-scroll-target="#twindragon-representations-of-all-gaussian-integers">Twindragon representations of <strong>all</strong> Gaussian integers</a></li>
+  <li><a href="#twindragons-in-the-complex-plane" id="toc-twindragons-in-the-complex-plane" class="nav-link" data-scroll-target="#twindragons-in-the-complex-plane">Twindragons in the complex plane</a>
+  <ul class="collapse">
+  <li><a href="#a-twindragon-fractiling" id="toc-a-twindragon-fractiling" class="nav-link" data-scroll-target="#a-twindragon-fractiling">A twindragon fractiling</a></li>
+  <li><a href="#a-twindragon-of-twindragons" id="toc-a-twindragon-of-twindragons" class="nav-link" data-scroll-target="#a-twindragon-of-twindragons">A twindragon of twindragons</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>In the standard binary number system, every integer is represented by a string of 1’s and 0’s. To determine which integer is represented by a given string we translate the string into a sum of powers of 2. For example, in the standard binary system <span class="math inline">\(\textcolor{#17a2b8}{1100}\)</span> represents the integer <span class="math display">\[\textcolor{#17a2b8}{1}\cdot2^3+\textcolor{#17a2b8}{1}\cdot2^2+\textcolor{#17a2b8}{0}\cdot2^1+\textcolor{#17a2b8}{0}\cdot2^0,\]</span> which (in the standard decimal system) is 12. Since the representation of numbers relies on powers of 2, we say that the standard binary system uses <em>base 2</em>.</p>
+<p>This post is concerned with a (non-standard) binary number system whose base is the complex number <span class="math inline">\(i-1\)</span>. We’ll see the beautiful fractal known as the <em>twindragon</em> showing up when we visualize this number system in the complex plane, so we call this number system the <em>twindragon binary system</em>.</p>
+<section id="the-twindragon-binary-system-for-complex-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="the-twindragon-binary-system-for-complex-numbers">The twindragon binary system for complex numbers</h2>
+<section id="first-calculations" class="level3">
+<h3 class="anchored" data-anchor-id="first-calculations">First calculations</h3>
+<p>Let’s look at the same binary string 1100 from above, but this time using the new base of <span class="math inline">\(i-1\)</span>. In the twindragon binary system <span class="math inline">\(\textcolor{#e95420}{1100}\)</span> represents <span id="eq-first-twindragon-calc"><span class="math display">\[\textcolor{#e95420}{1}(i-1)^3+\textcolor{#e95420}{1}(i-1)^2+\textcolor{#e95420}{0}(i-1)^1+\textcolor{#e95420}{0}(i-1)^0. \tag{1}\]</span></span> For another example, in twindragon binary <span class="math inline">\(1111001\)</span> represents <span id="eq-second-twindragon-calc"><span class="math display">\[(i-1)^6+(i-1)^5+(i-1)^4+(i-1)^3+(i-1)^0. \tag{2}\]</span></span> To simplify these expressions, it will be useful to know powers of <span class="math inline">\(i-1\)</span>. Here are the first several: <span class="math display">\[\begin{array}{|c|c|}
+\hline
+n &amp; (i-1)^n \\
+\hline
+0 &amp; 1 \\
+1 &amp; i-1 \\
+2 &amp; -2i \\
+3 &amp; 2+2i \\
+4 &amp; -4 \\
+5 &amp; 4-4i \\
+6 &amp; 8i \\
+7 &amp; -8-8i \\
+8 &amp; 16 \\
+\hline
+\end{array}\]</span> Using these powers we can simplify (<a href="#eq-first-twindragon-calc">1</a>) to see that <span class="math inline">\(\textcolor{#e95420}{1100}\)</span> is the twindragon binary representation of the integer 2. Simplifying (<a href="#eq-second-twindragon-calc">2</a>) shows us <span class="math inline">\(1111001\)</span> is the twindragon binary representation of the complex number <span class="math inline">\(3+6i\)</span>.</p>
+<p>Notice that sums of powers of <span class="math inline">\(i-1\)</span> will always result in a <a href="https://en.wikipedia.org/wiki/Gaussian_integer">Guassian integer</a>. In fact, we will soon see that each Guassian integer arises (uniquely) in this way.</p>
+</section>
+<section id="twindragon-representations-of-units" class="level3">
+<h3 class="anchored" data-anchor-id="twindragon-representations-of-units">Twindragon representations of units</h3>
+<p>Towards showing all Guassian integers have a twindragon binary representation, we start with the smallest. Of course, the twindragon representation of 0 is merely 0. The next smallest Gaussian integers are the four units: <span class="math inline">\(\pm 1, \pm i\)</span>. The following table shows the twindragon representations of those units. One can verify the values in the table using the methods above. <span id="eq-twindragon-units"><span class="math display">\[\begin{array}{|c|c|}
+\hline
+\text{Gaussian} &amp; \text{twindragon}  \\
+\text{integer} &amp; \text{binary} \\
+\hline
+1 &amp; 1 \\
+i &amp; 11 \\
+-i &amp; 111 \\
+-1 &amp; 11101 \\
+\hline
+\end{array} \tag{3}\]</span></span> Every other Guassian integer is the sum of unit Guassian integers. Since we know how the twindragon represents all the units, to see how to represent an arbitrary Guassian integer it suffices to provide an algorithm for twindragon addition.</p>
+</section>
+</section>
+<section id="twindragon-addition-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="twindragon-addition-algorithm">Twindragon addition algorithm</h2>
+<p>The addition algorithm for the twindragon binary system is similar to the one using standard binary: stack the binary strings atop one another lining up the rightmost bit, then add bits one by one from right to left with the appropriate carry procedure. There are, however, two key rules for twindragon addition that make the algorithm quite different from the standard one.</p>
+<section id="a-twindragon-carry-rule" class="level3">
+<h3 class="anchored" data-anchor-id="a-twindragon-carry-rule">A twindragon carry rule</h3>
+<p>The first key difference is the manner in which one “carries” bits. In the standard algorithm, one needs to “carry a 1” whenever the adding two 1’s. This corresponds to the fact that the standard binary representation of 2 (i.e.&nbsp;1+1) is 10. As we’ve seen above, the twindragon binary representation of the integer 2 is 1100. Thus we have the following <em>twindragon carry rule:</em></p>
+<p><span id="eq-carry-rule"><span class="math display">\[\begin{array}{cr}
+  &amp; 1\\
++ &amp; 1\\
+\hline
+&amp; 1100
+\end{array} \tag{4}\]</span></span></p>
+<p>This means that when the twindragon adds two 1’s it carries both 1’s to the positions according to the carry rule (<a href="#eq-carry-rule">4</a>). For example, consider the following sum: <span class="math display">\[\begin{array}{cr}
+  &amp; 111001\\
++ &amp; 101010\\
+\hline
+\end{array}\]</span> Starting from the right, the first three columns of bits are easily handled, leaving us at the following point: <span class="math display">\[\begin{array}{cr}
+  &amp; 11\textcolor{red}{1}\textcolor{#aea79f}{001}\\
++ &amp; 10\textcolor{red}{1}\textcolor{#aea79f}{010}\\
+\hline
+  &amp; 011
+\end{array}\]</span> Now, we carry the next two 1’s according to the carry rule (<a href="#eq-carry-rule">4</a>) leaving us with the following: <span class="math display">\[\begin{array}{cr}
+  &amp; \textcolor{red}{1100}\phantom{000}\\
+  &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}001}\\
++ &amp; 10\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}010}\\
+\hline
+  &amp; 0011
+\end{array}\]</span> The next column of bits is easily handled, leaving us in a position where we will have to carry two 1’s again: <span class="math display">\[\begin{array}{cr}
+  &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{00}\phantom{000}\\
+  &amp;  \textcolor{red}{1}\textcolor{#aea79f}{11001}\\
++ &amp;   1\textcolor{#aea79f}{01010}\\
+\hline
+  &amp; 10011
+\end{array}\]</span> Again, we carry according to the carry rule (<a href="#eq-carry-rule">4</a>) leaving us with <span class="math display">\[\begin{array}{cr}
+  &amp; \textcolor{red}{1100}\phantom{00000} \\
+  &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00}\phantom{000}\\
+  &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}11001}\\
++ &amp;   \textcolor{#aea79f}{101010}\\
+\hline
+  &amp; 110011
+\end{array}\]</span> The last three columns involve no carries, which gives the final result: <span class="math display">\[\begin{array}{cr}
+  &amp; \textcolor{#aea79f}{1100}\phantom{00000} \\
+  &amp; \textcolor{#aea79f}{1100}\phantom{000}\\
+  &amp;  \textcolor{#aea79f}{111001}\\
++ &amp;   \textcolor{#aea79f}{101010}\\
+\hline
+  &amp; 111110011
+\end{array}\]</span></p>
+</section>
+<section id="a-twindragon-cancel-rule" class="level3">
+<h3 class="anchored" data-anchor-id="a-twindragon-cancel-rule">A twindragon cancel rule</h3>
+<p>Recall from (<a href="#eq-twindragon-units">3</a>) that the twindragon representations of <span class="math inline">\(i\)</span> and <span class="math inline">\(-i\)</span> are 11 and 111, respectively. As a consequence, we get the following <em>twindragon cancel rule:</em> <span id="eq-cancel-rule"><span class="math display">\[\begin{array}{cr}
+  &amp;  11\\
++ &amp; 111\\
+\hline
+  &amp;   0
+\end{array} \tag{5}\]</span></span> Observe that the sum in (<a href="#eq-cancel-rule">5</a>) cannot be computed in a finite number of steps using just the carry rule (<a href="#eq-carry-rule">4</a>). Indeed, applying the carry rule to the rightmost bits in the sum above gives the following <span class="math display">\[
+\begin{array}{cr}
+  &amp;  1\textcolor{red}{1}\\
++ &amp; 11\textcolor{red}{1}\\
+\hline
+\end{array}
+\quad\leadsto\quad
+\begin{array}{cr}
+  &amp; \textcolor{red}{1100}\\
+  &amp;  1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
++ &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+\hline
+  &amp;   0
+\end{array}
+\]</span> If we ignore the 0’s and drop the top two 1’s down a row or two, then we are left with the following: <span class="math display">\[\begin{array}{cr}
+  &amp;  11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
++ &amp; 111\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+\hline
+  &amp;   0
+\end{array}\]</span> Computing the sum of the remaining columns of bits is the same sum we started with. Thus, if we continue then we will get a never-ending sting of 0’s as a result (which could be considered correct), but the algorithm never terminates.</p>
+<p>It turns out that the combination of the carry rule (<a href="#eq-carry-rule">4</a>) and cancel rule (<a href="#eq-cancel-rule">5</a>) suffice to compute the sum of any two binary strings in a finite number of steps. The most efficient way is to apply the cancel rule whenever possible. Here’s an example: <span class="math display">\[\begin{array}{cr}
+  &amp; 111011111\\
++ &amp;  10110110\\
+\hline
+\end{array}\]</span> To start, note that we can use the cancel rule (<a href="#eq-cancel-rule">5</a>) as follows: <span class="math display">\[
+\begin{array}{cr}
+  &amp; 11101\textcolor{red}{111}1\\
++ &amp;  10110\textcolor{red}{11}0\\
+\hline
+\end{array}
+\quad\leadsto\quad
+\begin{array}{cr}
+  &amp; 11101\textcolor{red}{000}1\\
++ &amp;  10110\textcolor{red}{00}0\\
+\hline
+\end{array}
+\]</span> Now, we proceed from right to left, and nothing interesting happens (thanks to all the new 0’s) until we reach the following point: <span class="math display">\[\begin{array}{cr}
+  &amp; 11101\textcolor{#aea79f}{0001}\\
++ &amp;  1011\textcolor{#aea79f}{0000}\\
+\hline
+  &amp; 0001
+\end{array}\]</span> Next, we apply the carry rule (<a href="#eq-carry-rule">4</a>): <span class="math display">\[
+\begin{array}{cr}
+\\
+  &amp; 1110\textcolor{red}{1}\textcolor{#aea79f}{0001}\\
++ &amp;  101\textcolor{red}{1}\textcolor{#aea79f}{0000}\\
+\hline
+  &amp; 0001
+\end{array}
+\quad\leadsto\quad
+\begin{array}{cr}
+  &amp;  \textcolor{red}{1100}\phantom{0000}\\
+  &amp; 1110\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0001}\\
++ &amp;  101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0000}\\
+\hline
+  &amp; 00001
+\end{array}
+\]</span> Now, we can once again apply the cancel rule (<a href="#eq-cancel-rule">5</a>): <span class="math display">\[
+\begin{array}{cr}
+  &amp;  \textcolor{red}{11}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  &amp; \textcolor{red}{111}0\textcolor{#aea79f}{10001}\\
++ &amp;  101\textcolor{#aea79f}{10000}\\
+\hline
+  &amp; 00001
+\end{array}
+\quad\leadsto\quad
+\begin{array}{cr}
+  &amp;  \textcolor{red}{00}0\textcolor{#aea79f}{0}\phantom{0000}\\
+  &amp; \textcolor{red}{000}0\textcolor{#aea79f}{10001}\\
++ &amp;  101\textcolor{#aea79f}{10000}\\
+\hline
+  &amp; 00001
+\end{array}
+\]</span> The rest of the calculation is straightforward, giving the following result: <span class="math display">\[\begin{array}{cr}
+  &amp;  \textcolor{#aea79f}{0000}\phantom{0000}\\
+  &amp;  \textcolor{#aea79f}{000010001}\\
++ &amp;   \textcolor{#aea79f}{10110000}\\
+\hline
+  &amp; 10100001
+\end{array}\]</span></p>
+</section>
+<section id="the-addition-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-addition-algorithm">The addition algorithm</h3>
+<p>As the example above illustrates, the following algorithm can be used to compute the sum of any finite collection of binary strings in the twindragon binary system:</p>
+<ul>
+<li>Stack the binary strings atop one another in the usual way.</li>
+<li>Start with the rightmost column of bits.</li>
+<li>While there are still columns of nonzero bits to add:
+<ul>
+<li>Apply the cancel rule as many times as possible.</li>
+<li>While there are at least two 1’s in the current column:
+<ul>
+<li>Apply the carry rule.</li>
+<li>Apply the cancel rule if possible.</li>
+</ul></li>
+<li>Add the remaining bits in the column (at most one of which is a 1).</li>
+<li>Move one column to the left</li>
+</ul></li>
+</ul>
+<p>The proof that the algorithm always terminates can be found below.</p>
+<details>
+<summary>
+Proof
+</summary>
+<p>It suffices to prove that the twindragon sum of two binary strings terminates. By adding extra 0’s to the left of one string if necessary, we may assume both strings have the same length. Thus, the sum has the following form: <span class="math display">\[\begin{array}{cccccc}
+      &amp;  a_n &amp; \cdots &amp; a_2 &amp; a_1 &amp; a_0\\
+    + &amp;  b_n &amp; \cdots &amp; b_2 &amp; b_1 &amp; a_0\\
+    \hline
+    \end{array}\]</span> We proceed by inducting on the number of 1’s that need to be added. If at any point we can apply the cancel rule, the number of 1’s decreases by five, and we are done by induction. Thus, we may assume it is never possible to apply the cancel rule. Starting on the right, add all the columns that contain only 0’s bringing us to a point looking like the following: <span class="math display">\[\begin{array}{cccccc}
+      &amp;  a_n &amp; \cdots &amp; a_{j+1} &amp; a_j &amp; \textcolor{#aea79f}{0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+1} &amp; b_j &amp; \textcolor{#aea79f}{0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp; 0\cdots0
+    \end{array}\]</span> Where at least one of <span class="math inline">\(a_j\)</span> or <span class="math inline">\(b_j\)</span> is 1. If the other is 0, then we add that column without a carry, the remaining columns will have one fewer 1, and we are done by induction. Thus we only need to consider the case where both <span class="math inline">\(a_j\)</span> and <span class="math inline">\(b_j\)</span> are 1, and we carry: <span class="math display">\[\begin{array}{ccccccc}
+      &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; a_{j+2} &amp; a_{j+1} &amp; \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; b_{j+2} &amp; b_{j+1} &amp; \textcolor{red}{1}~\textcolor{#aea79f}{0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp;&amp; \phantom{1~}0\cdots0
+    \end{array}\]</span> <span class="math display">\[\begin{array}{ccccccr}
+     &amp;&amp;&amp;\textcolor{red}{1}&amp;\textcolor{red}{1}&amp;\textcolor{red}{0}&amp; \textcolor{red}{0}~\phantom{0\cdots0} \\
+      &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; a_{j+2} &amp; a_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; b_{j+2} &amp; b_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp;&amp; 0~0\cdots0
+    \end{array}\]</span> Now, we may assume <span class="math inline">\(a_{j+1}\)</span> and <span class="math inline">\(b_{j+1}\)</span> are either both 0’s or both 1’s (else we can add that column, and we’re done by induction). In either case, adding the <span class="math inline">\((j+1)^{\text{st}}\)</span> column will not contribute any more 1’s to the <span class="math inline">\((j+2)^{\text{nd}}\)</span> column. Thus we may assume one of <span class="math inline">\(a_{j+2}\)</span> and <span class="math inline">\(b_{j+2}\)</span> is 0 and the other is 1 (else adding the <span class="math inline">\((j+2)^{\text{nd}}\)</span> column will result in a 1, and the remaining columns will have one fewer 1, and we’re done by induction). Without loss of generality, we may assume <span class="math inline">\(a_{j+2}=1\)</span> and <span class="math inline">\(b_{j+2}=0\)</span>, so the sum looks like <span class="math display">\[\begin{array}{ccccccr}
+     &amp;&amp;&amp; 1 &amp; 1 &amp; 0 &amp; \textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
+      &amp;  a_n &amp; \cdots &amp; a_{j+3} &amp; 1 &amp; a_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+3} &amp; 0 &amp; b_{j+1} &amp;  \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp;&amp; 0~0\cdots0
+    \end{array}\]</span> Now, if <span class="math inline">\(a_{j+1}\)</span> and <span class="math inline">\(b_{j+1}\)</span> are both 1’s, then we can apply the cancel rule (and we’re done by induction), so it suffices to consider the case where they are both 0. Then we add the <span class="math inline">\((j+1)^{\text{st}}\)</span> column and we perform a carry on the <span class="math inline">\((j+2)^{\text{nd}}\)</span> column: <span class="math display">\[\begin{array}{ccccccr}
+     &amp;&amp;&amp;&amp;&amp; 1 &amp; \textcolor{red}{1} ~ \textcolor{#aea79f}{0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
+      &amp;  a_n &amp; \cdots &amp; a_{j+5} &amp; a_{j+4} &amp; a_{j+3} &amp; \textcolor{red}{1} ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+5} &amp; b_{j+4} &amp; b_{j+3} &amp; 0 ~  \textcolor{#aea79f}{0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp;&amp; 0~0~0\cdots0
+    \end{array}\]</span></p>
+<p><span class="math display">\[\begin{array}{ccccccr}
+     &amp; &amp; &amp; \textcolor{red}{1} &amp; \textcolor{red}{1} &amp; \textcolor{red}{0} &amp; \textcolor{red}{0}\phantom{~0~0~0\cdots0}\\
+     &amp;&amp;&amp;&amp;&amp; 1 &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0}~\textcolor{#aea79f}{0}~\phantom{0\cdots0} \\
+      &amp;  a_n &amp; \cdots &amp; a_{j+5} &amp; a_{j+4} &amp; a_{j+3} &amp;   \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    + &amp;  b_n &amp; \cdots &amp; b_{j+5} &amp; b_{j+4} &amp; b_{j+3} &amp;   \textcolor{#aea79f}{0~0~\hspace{-5.75pt}\not{1}~0\cdots0}\\
+    \hline
+      &amp;&amp;&amp;&amp;&amp;&amp; 0~0~0~0\cdots0
+    \end{array}\]</span> Arguing as before, if both <span class="math inline">\(a_{j+3}\)</span> and <span class="math inline">\(b_{j+3}\)</span> are 0, then adding the <span class="math inline">\((j+3)^{\text{rd}}\)</span> column will leave us with one fewer 1 (and we’d be done by induction). Thus, we may assume there are two 1’s in the <span class="math inline">\((j+3)^{\text{rd}}\)</span> column. Since a carry from the <span class="math inline">\((j+3)^{\text{rd}}\)</span> column will not contribute a 1 to the <span class="math inline">\((j+4)^{\text{th}}\)</span> column, similar reasoning allows us to assume one of <span class="math inline">\(a_{j+4}\)</span> and <span class="math inline">\(b_{j+4}\)</span> is a 1. But now we are in a situation where the <span class="math inline">\((j+3)^{\text{rd}}\)</span> and <span class="math inline">\((j+4)^{\text{th}}\)</span> columns each have two 1’s, and the <span class="math inline">\((j+5)^{\text{th}}\)</span> column has a 1. Then we can apply the cancel rule, and we are done by induction.</p>
+</details>
+</section>
+</section>
+<section id="twindragon-representations-of-all-gaussian-integers" class="level2">
+<h2 class="anchored" data-anchor-id="twindragon-representations-of-all-gaussian-integers">Twindragon representations of <strong>all</strong> Gaussian integers</h2>
+To see that every Gaussian integer has a twindragon representation, notice that every Gaussian integer can be written as a sum of the units <span class="math inline">\(\pm1\)</span> and <span class="math inline">\(\pm i\)</span>. Since we know how to represent those units in twindragon binary (see (<a href="#eq-twindragon-units">3</a>)) we can find the desired twindragon representation using the addition algorithm. For example, to find the twindragon representation of <span class="math inline">\(-3+5i\)</span> we add three copies of the representation of <span class="math inline">\(-1\)</span> (11101) to five copies of the representation of <span class="math inline">\(i\)</span> (11). For those who are interested, the details of finding the representation of <span class="math inline">\(-3+5i\)</span> can be found below.
+<details>
+<summary>
+Details
+</summary>
+Let’s see what happens: <span class="math display">\[\begin{array}{cr}
+      &amp; 11101\\
+      &amp; 11101\\
+      &amp; 11101\\
+      &amp;    11\\
+      &amp;    11\\
+      &amp;    11\\
+      &amp;    11\\
+    + &amp;    11\\
+    \hline
+    \end{array}\]</span> First, let’s shift the bits down in the left three columns for convenience: <span class="math display">\[\begin{array}{cr}
+      &amp;     1\\
+      &amp;     1\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp;    11\\
+      &amp; 11111\\
+      &amp; 11111\\
+    + &amp; 11111\\
+    \hline
+    \end{array}\]</span> Now, we can apply a the cancel rule (<a href="#eq-cancel-rule">5</a>) a couple times: <span class="math display">\[
+    \begin{array}{cr}
+      &amp;     1\\
+      &amp;     1\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp;   \textcolor{red}{ 11}\\
+      &amp; 11\textcolor{red}{111}\\
+      &amp; 1\textcolor{blue}{11}11\\
+    + &amp; \textcolor{blue}{111}11\\
+    \hline
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp;     1\\
+      &amp;     1\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp;   \textcolor{red}{ 00}\\
+      &amp; 11\textcolor{red}{000}\\
+      &amp; 1\textcolor{blue}{00}11\\
+    + &amp; \textcolor{blue}{000}11\\
+    \hline
+    \end{array}
+    \]</span> After shifting the bits down again (for convenience) we have: <span class="math display">\[\begin{array}{cr}
+      &amp;     1\\
+      &amp;     1\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp; 10011\\
+    + &amp; 11011\\
+    \hline
+    \end{array}\]</span> Next, we apply the carry rule (<a href="#eq-carry-rule">4</a>) one time to the rightmost column to get <span class="math display">\[
+    \begin{array}{cr}
+      &amp;     \textcolor{red}{1}\\
+      &amp;     \textcolor{red}{1}\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp; 10011\\
+    + &amp; 11011\\
+    \hline
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp; \textcolor{red}{1100}\\
+      &amp;     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+      &amp;     \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+      &amp;     1\\
+      &amp;    11\\
+      &amp; 10011\\
+    + &amp; 11011\\
+    \hline
+    \end{array}\]</span> Dropping bits (and removing crossed out ones) gives the following, where we apply the cancel rule (<a href="#eq-cancel-rule">5</a>): <span class="math display">\[
+    \begin{array}{cr}
+      &amp;     1\\
+      &amp;    \textcolor{red}{11}\\
+      &amp; 11\textcolor{red}{111}\\
+    + &amp; 11011\\
+    \hline
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp;     1\\
+      &amp;    \textcolor{red}{00}\\
+      &amp; 11\textcolor{red}{000}\\
+    + &amp; 11011\\
+    \hline
+    \end{array}
+    \]</span> Let’s drop the bits again, and then we apply the carry rule to the right column: <span class="math display">\[
+    \begin{array}{cr}
+    \\
+      &amp; 1100\textcolor{red}{1}\\
+    + &amp; 1101\textcolor{red}{1}\\
+    \hline
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp; \textcolor{red}{1100}\\
+      &amp; 1100\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+    + &amp; 1101\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}}\\
+    \hline
+    \end{array}
+    \]</span> Now we sum the three rightmost columns to get: <span class="math display">\[
+    \begin{array}{cr}
+      &amp; 1\textcolor{#aea79f}{100}\\
+      &amp; 11\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 110
+    \end{array}
+    \]</span> The next column requires a carry: <span class="math display">\[
+    \begin{array}{cr}
+      &amp; \textcolor{red}{1}\textcolor{#aea79f}{100}\\
+      &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 110
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp; \textcolor{red}{1100}\phantom{000}\\
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#aea79f}{01\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 110
+    \end{array}
+    \]</span> We now add the current column of bits, and then drop the other bits for convenience: <span class="math display">\[
+    \begin{array}{cr}
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 111\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 1110
+    \end{array}
+    \]</span> The next column uses a carry rule: <span class="math display">\[
+    \begin{array}{cr}
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      &amp; \textcolor{red}{1}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{red}{1}\textcolor{#aea79f}{101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 1110
+    \end{array}
+    \quad\leadsto\quad
+    \begin{array}{cr}
+      &amp; \textcolor{red}{1100}\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}100}\\
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 1110
+    \end{array}
+    \]</span> Now we can sum the current column, and the next one. After dropping some bits we are left with <span class="math display">\[
+    \begin{array}{cr}
+      &amp; 1\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 11\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 101110
+    \end{array}
+    \]</span> One last carry and the rest is clear: <span class="math display">\[
+    \begin{array}{rl}
+    \begin{array}{cr}
+    \\
+      &amp; \textcolor{red}{1}\textcolor{#aea79f}{0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 1\textcolor{red}{1}\textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 101110
+    \end{array}
+    &amp;
+    \quad\leadsto\quad
+    \begin{array}{cr}
+     &amp; \textcolor{red}{1100}\phantom{000000}\\
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; 1\textcolor{#aea79f}{\hspace{-5.75pt}\not{1}1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 101110
+    \end{array}
+    \\
+    &amp;
+    \quad\leadsto\quad
+    \begin{array}{cr}
+     &amp; \textcolor{#aea79f}{1100}\phantom{000000}\\
+      &amp; \textcolor{#aea79f}{\hspace{-5.75pt}\not{1}0\hspace{-5.75pt}\not{1}\hspace{-5.75pt}\not{1}00\hspace{-5.75pt}\not{1}}\\
+    + &amp; \textcolor{#aea79f}{1\hspace{-5.75pt}\not{1}1\hspace{-5.75pt}\not{1}101\hspace{-5.75pt}\not{1}}\\
+    \hline
+      &amp; 1110101110
+    \end{array}
+    \end{array}
+    \]</span> Thus, we have found that the twindragon representation of <span class="math inline">\(-3+5i\)</span> is <span class="math inline">\(1110101110\)</span>.
+</details>
+</section>
+<section id="twindragons-in-the-complex-plane" class="level2">
+<h2 class="anchored" data-anchor-id="twindragons-in-the-complex-plane">Twindragons in the complex plane</h2>
+<p>We have seen that every Gaussian integer has a twindragon representation. In fact, these representations are unique (it’s a fun exercise to prove this). Thus, we have a way to label every point in the lattice of Gaussian integers in the complex plane with a binary string.</p>
+<p>In the following plot, a unit square is drawn around each of the <span class="math inline">\(2^{15}\)</span> Gaussian integers whose twindragon representations use 15 or fewer bits. The color of the square is determined by the length of the binary string: the more bits, the darker the square. For example, 0 is the lightest color; you can find it in the middle of the picture (you can zoom in). The next lightest square is 1, then 10 and 11 are just a little darker, and so on. The darkest squares are the <span class="math inline">\(2^{14}\)</span> Gaussian integers whose twindragon representations are 15 bits long.</p>
+<p>As the color darkens, the corresponding regions in the plane are approaching the beautiful Davis-Knuth dragon, also known as the <a href="https://en.wikipedia.org/wiki/Dragon_curve">twindragon</a>, hence the name of the binary system.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="548" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 547;"><span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { chart } <span class="im">from</span> <span class="st">"d/3964d6d505b9f008"</span></span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<section id="a-twindragon-fractiling" class="level3">
+<h3 class="anchored" data-anchor-id="a-twindragon-fractiling">A twindragon fractiling</h3>
+<p>We can extend the twindragon system from Gaussian integers to all complex numbers by adding fractional parts. For example, we write <span class="math inline">\(101.01\)</span> for the complex number <span class="math display">\[(i-1)^2 + (i-1)^0 + (i-1)^{-2} = 1-1.5i\]</span> We call <span class="math inline">\(101\)</span> and <span class="math inline">\(0.01\)</span> the <em>whole</em> and <em>fraction</em> parts of <span class="math inline">\(101.01\)</span>, respectively. Notice that representations with nonzero fraction parts can indeed have non-integer real or imaginary parts. One can show that every complex number can be represented in twindragon binary if we allow (possibly infinitely long) fraction parts. It should be noted that we no longer get uniqueness of representations after adding fraction parts.</p>
+<p>If we plot all the complex numbers whose twindragon representation have the same fixed whole part, the result is a twindragon. Moreover, all these twindragons (one for each Gaussian integer) tile the complex plane. Such a tiling by fractals is sometimes called a <em>fractiling.</em> We can see this twindragon fractiling in the following plot. There we plot each complex number whose twindragon representation has whole part with at most 3 bits, and fraction with at most 13 bits. The color of these <span class="math inline">\(2^{16}\)</span> points corresponds to the whole part as follows:</p>
+<p><span class="math display">\[\begin{array}{|c|cccccccc|}
+\hline
+\text{whole part} &amp; 0 &amp; 1 &amp; 10 &amp; 11 &amp; 100 &amp; 101 &amp; 110 &amp; 111\\
+\hline
+\text{color} &amp; \textcolor{#ff6961}{\bullet} &amp; \textcolor{#ffb480}{\bullet} &amp; \textcolor{#f8f38d}{\bullet} &amp; \textcolor{#42d6a4}{\bullet} &amp; \textcolor{#08cad1}{\bullet} &amp; \textcolor{#59adf6}{\bullet} &amp; \textcolor{#9d94ff}{\bullet} &amp; \textcolor{#c780e8}{\bullet} \\
+\hline
+\end{array}\]</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="570" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 569;"><span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { fractionChart } <span class="im">from</span> <span class="st">"d/526bb5e596bf883a"</span></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a>fractionChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-twindragon-of-twindragons" class="level3">
+<h3 class="anchored" data-anchor-id="a-twindragon-of-twindragons">A twindragon of twindragons</h3>
+<p>In the first plot, we used unit squares to represent each Gaussian integer, and those squares nicely tiled the complex plane. However, those squares are not the best picture of the Gaussian integers from the viewpoint of the twindragon. Indeed, the second plot shows that we should really replace those unit squares with “unit twindragons”, i.e.&nbsp;the collection of all points in the complex plane that share the same whole part. In the final plot below, we plot all complex numbers whose twindragon representation has whole part with at most 11 bits, and fraction part with at most 6 bits. The points are colored according to the length of their whole part (the longer the whole part the darker the point).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="579" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 578;"><span id="cb3-579"><a href="#cb3-579" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { twindragonChart } <span class="im">from</span> <span class="st">"d/60ea50d21dd08209"</span></span>
+<span id="cb3-580"><a href="#cb3-580" aria-hidden="true" tabindex="-1"></a>twindragonChart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>I first learned about the twindragon binary number system and the corresponding fractiling of the complex plane from Edgar’s book <a href="https://www.amazon.com/Measure-Topology-Geometry-Undergraduate-Mathematics/dp/0387747486">Measure, Topology, and Fractal Geometry</a>. The first appearance the twindragon binary number system is in W. Penny’s <a href="https://dl.acm.org/doi/pdf/10.1145/321264.321274">A “Binary” System for Complex Numbers</a>. I believe the first connection between the number system and the twindragon fractal is due to D. Knuth: <a href="https://www-cs-faculty.stanford.edu/~knuth/fg.html">Number representations and dragon curves</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import { chart } from \"d/3964d6d505b9f008\"\nchart\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import { fractionChart } from \"d/526bb5e596bf883a\"\nfractionChart\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"import { twindragonChart } from \"d/60ea50d21dd08209\"\ntwindragonChart\n"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../../posts/twindragon-binary";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
