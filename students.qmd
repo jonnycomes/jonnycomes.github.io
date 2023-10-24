@@ -15,7 +15,7 @@ Back in 2017 I wrote some notes to introduce undergraduates to diagram categorie
 <br>
 <a class="btn btn-outline-primary btn-sm" href="notes/diagram_cats.pdf" role="button">notes</a>
 
-#### An Introduction to Nonstandard Look and Say Sequence
+#### An Introduction to Nonstandard Look and Say Sequences
 
 These notes were written to introduce students to the theory of look and say sequences in the spirit of John Conway's paper [The Weird and Wonderful Chemistry of Audioactive Decay](https://link.springer.com/chapter/10.1007/978-1-4612-4808-8_53). The notes are not meant as a replacement for Conway’s
 delightful explanation of his methods and results. Instead, they are meant to explain how Conway’s methods and results can be generalized to other (nonstandard) look and say sequences.
