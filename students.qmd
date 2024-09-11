@@ -4,6 +4,9 @@ toc: true
 page-layout: article
 title-block-banner: false
 ---
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
 
 One of my favorite things to do at The College of Idaho is work with students on advanced undergraduate mathematics. You can check out some of the projects I have supervised in the past below. I have several ideas for student projects that I'd be happy to explore with interested and motivated students. 
 

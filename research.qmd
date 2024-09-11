@@ -19,6 +19,9 @@ website:
           - layout-knitr.qmd
           - layout-jupyter.qmd
 ---
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
 
 The majority of my research is in an area of pure mathematics called representation theory. I am usually  drawn to projects involving an interplay between combinatorial objects such as partitions or graphs and algebraic objects such as (super)groups or Lie (super)algebras. I am particularly interested in diagram categories related to Brauer algebras and Deligne's categories associated with representation theory in complex rank.
 
