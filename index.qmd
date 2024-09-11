@@ -12,6 +12,10 @@ about:
       href: https://linkedin.com/in/jcomes
 ---
 
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
+
 Assistant Professor of Mathematics
 <br>
 The College of Idaho
