@@ -5,7 +5,7 @@ page-layout: article
 title-block-banner: false
 ---
 
-One of my favorite things to do at The College of Idaho is work with students on advanced undergraduate mathematics. You can check out some of the projects I have supervised in the past below. I have several ideas for student projects that I'd be happy to explore with interested and motivated students. 
+One of my favorite things to do at The College of Idaho is work with students on advanced undergraduate mathematics. You can check out some of the projects I have supervised below. I have several ideas for student projects that I'd be happy to explore with interested and motivated students. 
 
 ## Resources for My Students
 
