@@ -5,8 +5,9 @@ project:
 website:
   title: "Jonny Comes"
   navbar:
-    background: secondary
-    right:
+    background: white
+    foreground: dark
+    left:
       # - text: "Research"
       #   menu:
       - research.qmd
@@ -19,9 +20,9 @@ website:
         href: https://linkedin.com/in/jcomes
 format:
   html:
-    theme:
-        light: united
-        dark: slate
+    theme: united
+        # light: united
+        # dark: slate
     css: styles.css
 
 
