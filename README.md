@@ -1,6 +1,6 @@
 # My webpage
 
-[jonnycomes.github.io](jonnycomes.github.io)
+[jonnycomes.github.io](https://jonnycomes.github.io/)
 
 On this site I keep lists of my publications, 
 my students' projects, and any resources I have written for student research projects.
