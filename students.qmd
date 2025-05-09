@@ -11,7 +11,7 @@ One of my favorite things to do at The College of Idaho is work with students on
 
 #### Notes on Diagram Categories
 
-Back in 2017 I wrote some notes to introduce undergraduates to diagram categories. The notes do not assume the reader has any experience with category theory, or even abstract algebra. The notes were intended to include a second part on Linear Diagram Categories, but that part was never realized. Perhaps some day I will go back and add this part, but the current version is still (I hope) a useful introduction to the topic.
+I wrote some notes to introduce undergraduates to diagram categories. The notes do not assume the reader has any experience with category theory, or even abstract algebra. These notes include an introduction to categories, functors, and (strict) monoidal categories; with a motivation of studying various diagram categories. There are plenty of things I would like to add to the notes (presentations of categories, linear categories, etc.). However, I have found that the current version is more than sufficient to get students up to speed enough to work on projects related to diagram categories. 
 <br>
 <a class="btn btn-outline-primary btn-sm" href="notes/diagram_cats.pdf" role="button">notes</a>
 
@@ -35,7 +35,16 @@ I wrote a Python module that students (or anyone else) can use to explore nonsta
 
 ## My Students' Projects
 
-#### Jellyfish Brauer Categories related to special orthosymplectic supergroups
+#### Balanced Oriented Partition Categories and Generalized Permutation Groups
+
+**Sara Warner** (2025)
+
+In the Spring of 2025, Sara learned about how the partition category $\mathcal{P}$ is related to the representation theory of the symmetric group $\Sigma_d$. In particular, she studied the full tensor functor $\mathcal{P(d)}\to\operatorname{Rep(\Sigma_d)}$. For this project, Sara proved that there is an analogous full tensor functor $\mathcal{BOP(d)}\to\operatorname{Rep(\Gamma_d)}$ where $\Gamma_d$ is the group of $d\times d$ generalized permutation matrices and $\mathcal{BOP(d)}$ is a diagram category consisting of so-called *balanced oriented partition diagrams*. Sara gave a poster presentation of this result at the 2025 SRC.
+
+<a class="btn btn-outline-primary btn-sm" href="studentwork/SRC_2025_Sara_Warner.pdf" role="button">poster</a>
+
+
+#### Jellyfish Brauer Categories Related to Special Orthosymplectic Supergroups
 
 **Ethan Bassingthwaite, Ryan Blau, Michael Coleman, and Julene Elias** (2023-24)
 
@@ -71,7 +80,7 @@ This project was completed during the Math Capstone course in the Fall of 2021. 
 
 This project started with a reading course in the Fall of 2019 on *Measure, Topology, and Fractal Geometry* by Edgar. A particularly beautiful topic in that book is the connection between various representations of complex numbers and fractilings of the complex plane. The following spring, Alex explored higher dimensional analogs of this topic by replacing the 2-dimensional complex numbers with the 4-dimensional quaternion algebra (the Hamiltonians). Alex presented his results at the 2020 SRC. Unfortunately, I do not have a copy of Alex's poster to share. 
 
-#### Factor groups of Knot and LOG groups
+#### Factor Groups of Knot and LOG Groups
 
 **Samuel Chandler** (2015 - 2017)
 
@@ -90,7 +99,7 @@ Colton presented examples at the 2016 SRC.
 <a class="btn btn-outline-primary btn-sm" href="studentwork/SRC_2016_Colton_Grainger.pdf" role="button">poster</a>
 
 
-#### Generators and relations for the Motzkin category
+#### Generators and Relations for the Motzkin Category
 
 **Jacob Karn** (2016)
 
