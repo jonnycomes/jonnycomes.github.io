@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Jonny Comes"
+  # favicon: twindragon.svg
   navbar:
     background: white
     foreground: dark
