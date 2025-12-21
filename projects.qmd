@@ -1,0 +1,72 @@
+---
+title: "Projects"
+title-block-banner: false
+---
+
+
+::: {.grid}
+
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**SurvivorPy**
+<details>
+	<summary>description</summary>
+	I created a Python wrapper of an R dataset, providing easy access to comprehensive Survivor reality show data through pandas DataFrames. The package wraps data from the R survivoR package, auto-syncs daily, making it easy for Python users to explore the rich dataset curated by survivoR.
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://github.com/jonnycomes/survivorpy" role="button">repo</a>
+:::
+
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**look_and_say**
+<details>
+	<summary>description</summary>
+	I built a Python module to investigate the structure of look and say sequences beyond Conway's classical case. This led to my analysis of stuttering variants, whose growth rates are an algebraic integer of degree 415
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://jonnycomes.github.io/look_and_say/docs/look_and_say.html" role="button">module</a>
+<a class="btn btn-outline-primary btn-sm" href="https://arxiv.org/abs/2206.11991" role="button">paper</a>
+:::
+
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**Hst**
+<details>
+	<summary>description</summary>
+    A Python implementation of a simplified version of Git. Built from scratch to understand the fundamental algorithms and data structures behind distributed version control.
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://github.com/jonnycomes/hst" role="button">repo</a>
+:::
+
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**NeuralNet**
+<details>
+	<summary>description</summary>
+    A simple neural network library written in Rust with Python bindings. It is designed for educational purposes—easy to read, easy to modify, and suitable for learning how neural networks work under the hood.
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://github.com/jonnycomes/neuralnet" role="button">repo</a>
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**movie-data**
+<details>
+	<summary>description</summary>
+    A Python project that fetches, transforms, and models movie data from TMDb and MovieLens for analysis and visualization.
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://github.com/jonnycomes/movie-data" role="button">repo</a>
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4 .project-card}
+**sandpiles**
+<details>
+	<summary>description</summary>
+    A python app for toppling sandpiles corresponding to rectangular grids in the abelian sandpile model.
+</details>
+<a class="btn btn-outline-primary btn-sm" href="https://github.com/jonnycomes/sandpiles" role="button">repo</a>
+:::
+
+:::
+
+---
+
+*This page showcases selected projects. To see more of my repos, visit my [GitHub profile](https://github.com/jonnycomes).*

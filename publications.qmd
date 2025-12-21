@@ -1,36 +1,12 @@
 ---
-title: "Research"
+title: "Publications"
 toc: false
 page-layout: article
 title-block-banner: false
-website:
-  sidebar:
-    style: "docked"
-    search: true
-    contents:
-      - section: "Basics"
-        contents:
-          - index.qmd
-          - basics-knitr.qmd
-          - basics-jupyter.qmd
-      - section: "Layout"
-        contents:
-          - layout.qmd
-          - layout-knitr.qmd
-          - layout-jupyter.qmd
 ---
 
-The majority of my research is in an area of pure mathematics called representation theory. I am usually  drawn to projects involving an interplay between combinatorial objects such as partitions or graphs and algebraic objects such as (super)groups or Lie (super)algebras. I am particularly interested in diagram categories related to Brauer algebras and Deligne's categories associated with representation theory in complex rank.
+My research has focused on an area of pure mathematics called representation theory. I have been drawn to projects involving an interplay between combinatorial objects such as partitions or graphs and algebraic objects such as (super)groups or Lie (super)algebras. I have been particularly interested in diagram categories related to Brauer algebras and Deligne's categories associated with representation theory in complex rank.
 
-### Publications and Preprints
-
-1. **Stuttering look and say sequences and a challenger to Conway's most complicated algebraic number from the silliest source**
-<br>
-<a class="btn btn-outline-primary btn-sm" href="https://arxiv.org/abs/2206.11991" role="button">preprint</a>
-<details>
-	<summary>abstract</summary>
-	We introduce stuttering look and say sequences and describe their chemical structure in the spirit of Conway's work on audioactive decay. We show the growth rate of a stuttering look and say sequence is an algebraic integer of degree 415.
-</details>
 
 1. **Jellyfish partition categories** 
 <br>
@@ -133,12 +109,15 @@ The majority of my research is in an area of pure mathematics called representat
 <a class="btn btn-outline-primary btn-sm" href="https://arxiv.org/abs/0910.5695" role="button">arXiv</a> 
 <details>
 	<summary>abstract</summary>
-	Recently P. Deligne introduced the tensor category $\underline{\operatorname{Re}}\!\operatorname{p}(S_t)$ (for $t$ not necessarily an integer) which in a certain precise sense interpolates the categories $\operatorname{Rep}(S_d)$ of representations of the symmetric groups $S_d$. In this paper we describe the blocks of Deligne's category $\underline{\operatorname{Re}}\!\operatorname{p}(S_t).$
+	P. Deligne introduced the tensor category $\underline{\operatorname{Re}}\!\operatorname{p}(S_t)$ (for $t$ not necessarily an integer) which in a certain precise sense interpolates the categories $\operatorname{Rep}(S_d)$ of representations of the symmetric groups $S_d$. In this paper we describe the blocks of Deligne's category $\underline{\operatorname{Re}}\!\operatorname{p}(S_t).$
 </details>
 
-
-
-
-
-
-
+1. **Regular Polytopes**
+<br>
+*The Mathematics Enthusiast*, Vol. 1: No. 2 , Article 2 (2004)
+<br>
+<a class="btn btn-outline-primary btn-sm" href="https://scholarworks.umt.edu/tme/vol1/iss2/2/" role="button">journal</a>
+<details>
+	<summary>context</summary>
+	This undergraduate paper explores the classification and properties of regular polytopes in various dimensions. While the results were already known long before I wrote this paper, they were rediscovered independently as part of my undergraduate research.
+</details>

@@ -4,17 +4,16 @@ project:
 
 website:
   title: "Jonny Comes"
-  # favicon: twindragon.svg
   navbar:
     background: white
     foreground: dark
     left:
-      # - text: "Research"
-      #   menu:
-      - research.qmd
-      # - publications.qmd
-      - students.qmd
       - posts.qmd
+      - projects.qmd
+      - text: "Research"
+        menu:
+          - publications.qmd
+          - students.qmd
       - icon: github
         href: https://github.com/jonnycomes
       - icon: linkedin

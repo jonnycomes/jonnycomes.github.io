@@ -1,32 +1,28 @@
 ---
 title: "Jonny Comes"
+navbar: false
 about:
   template: jolla
   image: twindragon.jpg
   links:
+    - icon: journal-text
+      text: Posts
+      href: posts.qmd
+    - icon: diagram-3
+      text: Publications  
+      href: publications.qmd
+    - icon: code-slash
+      text: Projects
+      href: projects.qmd
     - icon: github
       text: Github
       href: https://github.com/jonnycomes
-    - icon: LinkedIn
+    - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/jcomes
 ---
 
-Assistant Professor of Mathematics
-<br>
-The College of Idaho
 
-### Education
-
-**University of Oregon** | Eugene, OR
-<br>
-PhD in Mathematics | 2010 
-
-**University of Montana** | Missoula, MT
-<br>
-M.A. in Mathematics | 2004
-<br>
-B.A. in Mathematics | 2003
 
 
 
