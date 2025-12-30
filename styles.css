@@ -7,14 +7,142 @@
   margin-bottom: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto auto; /* image area flexible, title fixed, description fixed */
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Project title styling for consistent height */
-.project-card > p:first-child {
-  min-height: 3rem;
-  display: flex;
-  align-items: flex-start;
+/* Image area takes up flexible space */
+.project-image-link {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  align-self: start; /* Align to top of the grid area */
+}
+
+/* Title positioned consistently */
+.project-title {
+  margin: 1rem 0 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bs-dark);
+  text-align: center;
+  align-self: end; /* Align to bottom of its grid area */
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Project image styling */
+.project-image {
+  width: 100%;
+  height: auto; /* Let image keep its natural aspect ratio */
+  border-radius: 6px;
   margin-bottom: 1rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.project-image-link .project-image {
+  margin-bottom: 1rem;
+}
+
+.project-image-link::after {
+  content: 'repo';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--image-width, 100%);
+  height: var(--image-height, calc(100% - 1rem));
+  background: rgba(221, 107, 53, 0.95); /* Orange color to match your btn-outline-primary */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border: 2px solid #dd6b35;
+  box-sizing: border-box;
+  pointer-events: none; /* Allow clicks to pass through to the link */
+}
+
+.project-image-link:hover::after {
+  opacity: 1;
+}
+
+.project-image-link:hover .project-image {
+  transform: scale(0.98);
+}
+
+/* Project description styling */
+.project-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--bs-secondary);
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.project-card:hover .project-description {
+  height: auto;
+  margin-top: 1rem;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Prevent description hover when hovering over the image */
+.project-image-link:hover ~ .project-title ~ .project-description {
+  height: 0;
+  margin: 0;
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .project-description {
+    font-size: 0.85rem;
+  }
+  
+  /* On mobile, show description on tap/touch - more complete mobile support */
+  .project-card:active .project-description {
+    height: auto;
+    margin-top: 1rem;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  
+  /* Add touch-friendly feedback */
+  .project-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Image hover button on mobile - show on tap */
+  .project-image-link:active::after {
+    opacity: 1;
+  }
+  
+  /* Slightly larger touch targets on mobile */
+  .project-card {
+    padding: 1.25rem;
+  }
+  
+  .project-title {
+    font-size: 1.05rem;
+  }
 }

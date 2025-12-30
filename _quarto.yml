@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: docs
 
+jupyter: quarto-env/bin/python
+
 website:
   title: "Jonny Comes"
   navbar:
@@ -24,6 +26,8 @@ format:
         # light: united
         # dark: slate
     css: styles.css
+    include-after-body: |
+      <script src="project-hover.js"></script>
 
 
 

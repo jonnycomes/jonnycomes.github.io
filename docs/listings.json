@@ -1,15 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/posts/sandbox/Untitled.html",
-      "/posts/quantum-computing-resources/index.html",
-      "/posts/phase-estimation/index.html",
-      "/posts/quantum-fourier-transform/index.html",
-      "/posts/first-qiskit/index.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
       "/posts/sandbox/Untitled.html",
@@ -18,13 +8,5 @@
       "/posts/quantum-fourier-transform/index.html",
       "/posts/first-qiskit/index.html"
     ]
-  },
-  {
-    "listing": "/research.html",
-    "items": []
-  },
-  {
-    "listing": "/publications.html",
-    "items": []
   }
 ]
