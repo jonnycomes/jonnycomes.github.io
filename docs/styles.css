@@ -10,7 +10,8 @@
   display: grid;
   grid-template-rows: 1fr auto auto; /* image area flexible, title fixed, description fixed */
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-radius 0.3s ease;
+  z-index: 1; /* Base z-index for cards */
 }
 
 /* Image area takes up flexible space */
@@ -34,6 +35,9 @@
 .project-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 100; /* Higher z-index when hovering to bring description to front */
+  border-bottom-left-radius: 0; /* Remove bottom left corner rounding */
+  border-bottom-right-radius: 0; /* Remove bottom right corner rounding */
 }
 
 /* Project image styling */
@@ -84,32 +88,38 @@
 
 /* Project description styling */
 .project-description {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bs-gray-100);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-top-left-radius: 0; /* Remove top left corner rounding */
+  border-top-right-radius: 0; /* Remove top right corner rounding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   font-size: 0.85rem;
   line-height: 1.4;
   color: var(--bs-secondary);
-  height: 0;
-  margin: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: all 0.3s ease;
   text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 200; /* Very high z-index to ensure it appears on top */
 }
 
 .project-card:hover .project-description {
-  height: auto;
-  margin-top: 1rem;
-  transform: scaleY(1);
   opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* Prevent description hover when hovering over the image */
 .project-image-link:hover ~ .project-title ~ .project-description {
-  height: 0;
-  margin: 0;
-  transform: scaleY(0);
   opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
 }
 
 /* Mobile-specific adjustments */

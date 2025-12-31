@@ -23,8 +23,6 @@ website:
 format:
   html:
     theme: united
-        # light: united
-        # dark: slate
     css: styles.css
     include-after-body: |
       <script src="project-hover.js"></script>
