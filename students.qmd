@@ -1,5 +1,5 @@
 ---
-title: "Student Projects"
+title: "Work with Students"
 toc: true
 page-layout: article
 title-block-banner: false
